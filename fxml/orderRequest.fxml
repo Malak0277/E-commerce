@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="333.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ShopController">
+   <children>
+      <AnchorPane fx:id="Data" prefHeight="287.0" prefWidth="335.0" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);" stylesheets="@../../../../../Software%20Testing,%20Validation,%20and%20Verification/Major%20Task/Sample%20GitHub%20E-commerce/OneClickAway-E-Commerce/src/sample/style1.css">
+         <children>
+            <Label layoutX="31.0" layoutY="37.0" text="Address" textFill="#665220">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="29.0" layoutY="57.0" prefHeight="26.0" prefWidth="276.0" />
+            <Label layoutX="29.0" layoutY="106.0" text="Phone number" textFill="#665220">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="29.0" layoutY="124.0" prefHeight="26.0" prefWidth="276.0" />
+            <Label layoutX="31.0" layoutY="188.0" text="Payment method" textFill="#665220">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox layoutX="158.0" layoutY="185.0" prefHeight="6.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
