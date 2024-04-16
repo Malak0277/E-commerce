@@ -1,14 +1,16 @@
 import java.time.Year;
 import java.util.Calendar;
 
-public class Payment {
-    public String visa_holder_name;
-	public String Visa_no;
-	public int month;
-	public int year;
-	public int cvv;
+public class Visa {
+    private String visa_holder_name;
+	private String Visa_no;
+	private int month;
+	private int year;
+	private int cvv;
 	
-	public Payment(String visa_holder_name, String Visa_no, int month, int year, int cvv)
+	public Visa(){}
+
+	public Visa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
 	{
 		this.visa_holder_name = visa_holder_name;
 		this.Visa_no = Visa_no;
@@ -21,20 +23,20 @@ public class Payment {
 	{
 		Calendar cal = Calendar.getInstance();
 		if (this.year < cal.get(Calendar.YEAR))
-			return true;
+			return false;
 		
 		else if(this.year == Year.now().getValue())
 			if(this.month < cal.get(Calendar.MONTH))
-				return true;
+				return false;
 		
-		return false;
+		return true;
 	}
 	
 	public boolean addVisa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
 	{
 		if(this.validvisa())
 		{
-			new Payment(visa_holder_name, Visa_no, month, year, cvv);
+			new Visa(visa_holder_name, Visa_no, month, year, cvv);
 			return true;
 		}
 		

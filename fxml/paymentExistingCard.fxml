@@ -42,7 +42,7 @@
             <Image url="@../../../../Software%20Testing,%20Validation,%20and%20Verification/Major%20Task/E-commerce/images/payment/Credit%20Card.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="421.0" layoutY="32.0" prefHeight="66.0" prefWidth="190.0" text="Payment" textAlignment="JUSTIFY" textFill="#665220">
+      <Label layoutX="421.0" layoutY="31.0" prefHeight="66.0" prefWidth="190.0" text="Payment" textAlignment="JUSTIFY" textFill="#665220">
          <font>
             <Font name="Bernard MT Condensed" size="53.0" />
          </font>
