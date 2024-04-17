@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+
+    import java.util.ArrayList;
+    import java.util.Timer;
+    import java.util.TimerTask;
 import java.util.UUID;
 
 public class Order {
@@ -7,6 +10,7 @@ public class Order {
 	private double totalPrice;
 	private String status;
 	private String OrderID;
+    private Timer timer;
 	
 	
 	public Order (Cart cart, double totPrice, String status)
@@ -15,7 +19,27 @@ public class Order {
 		this.totalPrice = calc_totalPrice(totPrice);
 		this.status = status;
 		this.OrderID = OrderIDGenerate();
+        this.timer = new Timer();
+        scheduleStatusUpdate();
 	}
+    private void scheduleStatusUpdate() {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                updateOrderStatus();
+            }
+        }, 0, 120 * 1000); // 120 seconds = 2 minute
+    }
+    private void updateOrderStatus() {
+            if (status.equals("Order_Placed")) {
+                setStatus("Packed");
+            } else if (status.equals("Packed")) {
+                setStatus("Dispatch");
+            }
+            else if (status.equals("Dispatch")) {
+                setStatus("Delivered");
+            }
+    }
 	
 	public double calc_totalPrice(double totPrice)
 	{
@@ -35,4 +59,16 @@ public class Order {
 		
 		return orderId;
 	}
+    public String getStatus(){
+        return this.status;
+    }
+    public void setStatus(String newStatus){
+    	this.status=newStatus;
+    }
+    public String getOrderID(){
+    	return this.OrderID;
+    }
+    public void cancel_order() {
+    	setStatus("Cancelled");}
 }
+
