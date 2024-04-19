@@ -1,10 +1,14 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -31,7 +35,8 @@ public class LoginController {
 
     @FXML
     void CancelButtonOnAction(ActionEvent event) {
-        // todo: cancel it
+        UsernameTF.setText("");
+        PasswordTF.setText("");
     }
 
     @FXML
@@ -39,18 +44,31 @@ public class LoginController {
         String username = UsernameTF.getText();
         String password = PasswordTF.getText();
 
-        // todo: check if username exists in database
-        // todo: check if password matches username's password in database
+        User user = new User();
+        if(user.login(username, password)){
+            // todo: go to homepage
+        } else {
+            LoginMessageLabel.setText("Wrong username or password");
+        }
     }
 
     @FXML
     void SignupButtonOnAction(ActionEvent event) {
-        // todo: go to sign up page
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource("Signup.fxml")); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
     }
 
     @FXML
     public void initialize() {
         LoginButton.setOnAction(event -> LoginButtonOnAction(event));
+        CancelButton.setOnAction(event -> CancelButtonOnAction(event));
     }
 
 }
