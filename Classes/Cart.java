@@ -1,52 +1,39 @@
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
-    private ArrayList<Item> myItems;
-    private ArrayList<Integer> itemAmounts;
+    private Map<Item, Integer> itemAmounts;
     private double totalPrice;
 
     public Cart() {
-        this.myItems = new ArrayList<>();
-        this.itemAmounts = new ArrayList<>();
+        this.itemAmounts = new HashMap<>();
         this.totalPrice = 0.0;
     }
 
     public void addToCart(Item item, int amount) {
         if (amount <= 0)
             throw new IllegalArgumentException("Amount must be positive.");
-        int index = myItems.indexOf(item);
-        if (index == -1) {
-            myItems.add(item);
-            itemAmounts.add(amount);
-        } else {
-            int oldAmount = itemAmounts.get(index);
-            int newAmount = oldAmount + amount;
-            itemAmounts.set(index, newAmount);
-        }
+        int currentAmount = itemAmounts.getOrDefault(item, 0);
+        itemAmounts.put(item, currentAmount + amount);
         setTotalPrice();
     }
 
     public void removeFromCart(Item item) {
-        int index = myItems.indexOf(item);
-        if (index == -1)
+        if (!itemAmounts.containsKey(item))
             throw new IllegalArgumentException("Item not found in cart.");
-        else {
-            myItems.remove(index);
-            itemAmounts.remove(index);
-            setTotalPrice();
-        }
+        itemAmounts.remove(item);
+        setTotalPrice();
     }
 
     public void emptyCart() {
-        myItems.clear();
         itemAmounts.clear();
         setTotalPrice();
     }
 
-    public void setTotalPrice() {
+    private void setTotalPrice() {
         double price = 0;
-        for (int i = 0; i < myItems.size(); i++)
-            price += myItems.get(i).getPrice() * itemAmounts.get(i);
+        for (Map.Entry<Item, Integer> entry : itemAmounts.entrySet())
+            price += entry.getKey().getPrice() * entry.getValue();
         totalPrice = price;
     }
 

@@ -1,0 +1,140 @@
+create database Book_store;
+go
+
+use Book_store;
+
+
+create table accounts (
+    username varchar(40) primary key,
+    password varchar(40),
+    fname varchar(40),
+    lname varchar(40),
+    phoneno varchar(11),
+    address varchar(40)
+);
+
+
+create table payment (
+    username varchar(40),
+    visa_no int,
+    primary key (username, visa_no),
+    foreign key (username) references accounts (username)
+);
+
+alter table payment 
+add visa_name varchar(40),
+    expiry_day int,
+    expiry_month int,
+    cvv int;
+
+
+create table shopping_cart (
+    username varchar(40),
+    bookid varchar(20),
+    primary key (username, bookid),
+    foreign key (username) references accounts (username),
+    quantity int not null
+); 
+select 
+    sc.username,
+    sc.bookid,
+    b.price * sc.quantity as amount
+from 
+    shopping_cart sc
+inner join 
+    books b on sc.bookid = b.book_id;
+
+create table books (
+    book_id varchar(20) primary key,
+    price int,
+    stock int,
+    genre varchar(20),
+    book_name varchar(100),
+    book_cover varbinary(max)
+);
+alter table books
+drop column book_cover;
+
+alter table shopping_cart
+add constraint bookid_fk foreign key (bookid) references books(book_id);
+
+-- sample data
+insert into books (book_name, genre, price, stock, book_id)
+values
+    ('To Kill a Mockingbird', 'Fiction', 50, 15, 'TKAM001'),
+    ('1984', 'Dystopian', 30, 12, 'NINETEEN84'),
+    ('Pride and Prejudice', 'Romance', 40, 10, 'PRIDE001'),
+    ('The Great Gatsby', 'Classic', 25, 13, 'GREATGATSBY001'),
+    ('Harry Potter and the Sorcerer''s Stone', 'Fantasy', 60, 20, 'HPSS001'),
+	('The Catcher in the Rye', 'Fiction', 35, 14, 'CATCHER001'),
+    ('To the Lighthouse', 'Modernist', 20, 11, 'LIGHTHOUSE001'),
+    ('The Lord of the Rings', 'Fantasy', 45, 18, 'LOTR001'),
+    ('The Hobbit', 'Fantasy', 55, 16, 'HOBBIT001'),
+    ('Moby-Dick', 'Adventure', 30, 17, 'MOBYDICK001');
+
+create table orders (
+    username varchar(40),
+    order_id int identity (1,1),
+    primary key (username, order_id),
+    foreign key (username) references accounts (username),
+    total_price int,
+    order_status tinyint not null,
+    order_date date not null
+);
+drop table orders;
+
+create table orders (
+    username varchar(40),
+    order_id int identity (1,1),
+    primary key ( order_id),
+    foreign key (username) references accounts (username),
+    total_price int,
+    order_status tinyint not null,
+    order_date date not null
+);
+
+create table order_books (
+    order_id int identity (1,1),
+    book_id varchar(20),
+    primary key (order_id, book_id),
+
+);
+
+
+AlTER TABLE order_books
+ADD CONSTRAINT FK_1
+FOREIGN KEY (order_id) REFERENCES orders(order_id);
+
+ALTER TABLE order_books
+ADD CONSTRAINT FK_
+FOREIGN KEY (book_id) REFERENCES books(book_id);
+
+
+create procedure calculate_order_total_price
+    @username varchar(40),
+    @order_id int
+as
+begin
+    declare @total_price int;
+
+
+    select @total_price = sum(b.price * ob.quantity)
+    from order_books ob
+    inner join books b on ob.book_id = b.book_id
+    where ob.order_id = @order_id;
+
+    -- Update the total_price in the orders table for the specified order
+    update orders
+    set total_price = @total_price
+    where username = @username and order_id = @order_id;
+end;
+
+--EXEC CalculateOrderTotalPrice @username = 'username', @order_id = 123;
+
+--create table order_books (
+--order_id int identity (1,1) ,
+--book_id int,
+--primary key (book_id, order_id),
+--);
+
+--drop  table order_books;

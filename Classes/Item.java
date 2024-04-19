@@ -1,8 +1,11 @@
+import javafx.scene.image.Image;
+
 public class Item {
     private String name;
     private String genre;
     private double price;
     private int stock;
+    //private Image image;
 
     public Item (String name, String genre, double price, int stock)
     {
