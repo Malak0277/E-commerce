@@ -38,14 +38,59 @@ public class PaymentController {
     private ChoiceBox<String> yearChoiceBox;
 
     @FXML
+    private Label MessageLabel;
+
+    @FXML
     void nextBtnOnAction(ActionEvent event) {
-        UsernameTF.setText("");
-        PasswordTF.setText("");
+        String cardHolder = name.getText();
+        String num = number.getText();
+        String cv = cvv.getText();
+        String month = monthChoiceBox.getValue();
+        String year = yearChoiceBox.getValue();
+
+        // Check if any of the text fields are empty
+        if (cardHolder.isEmpty() || num.isEmpty() || cv.isEmpty()) {
+            MessageLabel.setText("Please fill in all fields");
+            return; 
+        }
+
+        if(cv.length() < 3){
+            MessageLabel.setText("Incomplete cvv"); 
+            return; 
+        }
+
+        Visa visa = new Visa();
+
+        if(!visa.validvisa()){
+            MessageLabel.setText("Invlaid Visa");
+            return;           
+        }
+
+
+
+
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource("Omangement.fxml")); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
     }
 
     @FXML
     void backBtnOnAction(ActionEvent event) {
-        //todo: go to homepage
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource("orderRequest.fxml")); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
     }
 
     @FXML

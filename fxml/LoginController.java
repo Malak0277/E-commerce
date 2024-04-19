@@ -44,6 +44,12 @@ public class LoginController {
         String username = UsernameTF.getText();
         String password = PasswordTF.getText();
 
+        // Check if any of the text fields are empty
+        if (username.isEmpty() || password.isEmpty()) {
+            signupmessageLabel.setText("Please fill in all fields");
+            return; 
+        }
+        
         User user = new User();
         if(user.login(username, password)){
             // todo: go to homepage

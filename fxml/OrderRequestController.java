@@ -39,15 +39,68 @@ public class OrderRequestController {
     private ToggleGroup visaSelection;
 
     @FXML
+    private Label MessageLabel;
+
+    @FXML
     void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
+        String ad = address.getText();
+        
+        // Allow only numbers and limit Card Number to maximum 16 characters
+        phoneNumber.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                number.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+            if (newValue.length() >= 11) {
+                number.setText(newValue.substring(0, 16));
+            }
+        });
+
+        // Check if any of the text fields are empty
+        if (ad.isEmpty() || phoneNumber.isEmpty()) {
+            MessageLabel.setText("Please fill in all fields");
+            return; 
+        }
+
+        if(phoneNumber.length < 11){
+            MessageLabel.setText("Phone number too short");
+            return; 
+        }
+
+        Order o = new Order();
+        o.orderRequest(ad, phoneNumber);
+
         if ("Cash".equals(selectedOption)) {
-            // todo: go to OManagement
+            Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource("Omangement.fxml")); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
         } else {
             if("Existing Visa".equals(selectedRadio)){
-            // todo: go to paymentExistingCard
+                Parent root;
+                try {
+                        FXMLLoader loader = new FXMLLoader (getClass().getResource("paymentExistingCard.fxml")); 
+                        root = loader.load();
+                        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();} 
+                catch (IOException e) {}
         }
         else{
-            // todo: go to payment
+            Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource("payment.fxml")); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
         }
         }
     }
@@ -59,8 +112,9 @@ public class OrderRequestController {
 
     
     @FXML
-    public void initialize() {
-        methodChoiceBox.getItems().addAll("Cash", "Visa");
+    public void initialize() { 
+
+        methodChoiceBox.getItems().addAll("Visa", "Cash");
         methodChoiceBox.getSelectionModel().selectFirst();
         String selectedOption = methodChoiceBox.getValue();
         String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();
@@ -77,9 +131,10 @@ public class OrderRequestController {
         });
 
         nextBtn.setOnAction(event -> {
-            nextBtnnOnAction(event, selectedOption, selectedRadio);
+            nextBtnOnAction(event, selectedOption, selectedRadio);
         });
-        nbackBtn.setOnAction(event -> backBtnOnAction(event));
+
+        backBtn.setOnAction(event -> backBtnOnAction(event));
     }
 
 }

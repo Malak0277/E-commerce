@@ -35,6 +35,11 @@
                </font>
             </Button>
             <ListView fx:id="cards" layoutX="25.0" layoutY="57.0" prefHeight="188.0" prefWidth="358.0" />
+            <Label fx:id="MessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="299.0" prefHeight="27.0" prefWidth="206.0" textAlignment="CENTER" textFill="#bf2727">
+               <font>
+                  <Font name="Goudy Old Style" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <ImageView fitHeight="174.0" fitWidth="183.0" layoutX="429.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">

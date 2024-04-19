@@ -45,7 +45,15 @@ public class SignupController {
 
     @FXML
     void GobackButtonOnAction(ActionEvent event) {
-        // todo: go back to login page
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource("login.fxml")); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
     }
 
     @FXML
@@ -58,22 +66,24 @@ public class SignupController {
 
         // Check if any of the text fields are empty
         if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            signupmessageLabel.setText("Please fill in all fields.");
+            signupmessageLabel.setText("Please fill in all fields");
             return; 
         }
 
         // Check if password and confirmPassword are equal
         if (password.equals(confirmPassword)) {
-            signupmessageLabel.setText("Password and Confirm Password should not be equal.");
+            signupmessageLabel.setText("Passwords don't match");
             return;
         }
 
-        // todo: check that username doesn't already exist in the database
-
         User user = new User();
+        if(!(user.signup(username))){
+            signupmessageLabel.setText("Username already exists");
+            return;
+        }
+
         user.CreateAccount(firstName, lastName, username, password);
 
-        // todo: add to database
 
         // todo: go to homepage
     }

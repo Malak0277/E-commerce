@@ -14,21 +14,26 @@ public class Order {
     private String Address;
     private String Phonenumber;
 
+
+    public Order(){
+    }
+
+    public Order (Cart cart, double totPrice)
+    {
+        this.cart = cart;
+        this.totalPrice = calc_totalPrice(totPrice);
+        status = "Order_Placed";
+        this.OrderID = OrderIDGenerate();
+        this.timer = new Timer();
+        scheduleStatusUpdate();
+    }
+
     public void orderRequest(String Address, String Phonenumber)
     {
         this.Address = Address;
         this.Phonenumber = Phonenumber;
     }
 
-    public Order (Cart cart, double totPrice, String status)
-    {
-        this.cart = cart;
-        this.totalPrice = calc_totalPrice(totPrice);
-        this.status = status;
-        this.OrderID = OrderIDGenerate();
-        this.timer = new Timer();
-        scheduleStatusUpdate();
-    }
 
     private void scheduleStatusUpdate() {
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -78,6 +83,8 @@ public class Order {
         return this.OrderID;
     }
     public void cancel_order() {
-        setStatus("Cancelled");}
+        setStatus("Cancelled"); //INCREASE EL STOCK
+        
+    }
 }
 
