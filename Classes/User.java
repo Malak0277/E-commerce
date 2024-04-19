@@ -20,9 +20,9 @@ public class User {
 	}
 	
 	
-	public boolean Create_Account(String FN, String LN, String UserName, String Password, String Password2)
-	{
-		if(Password.equals(Password2)){
+	public boolean CreateAccount(String FN, String LN, String UserName, String Password, String Password2)
+	{   
+		if(Password.equals(Password2)){ //check in database for no duplication for username
 			new User(FN, LN, UserName, Password);
 			return true;
 		}
@@ -46,17 +46,17 @@ public class User {
 		this.Visa = Visa;
 	}
 	
-	public String get_UserName()
+	public String getUserName()
 	{
 		return UserName;
 	}
 	
-	public String get_Address()
+	public String getAddress()
 	{
 		return Address;
 	}
 	
-	public String get_Phonenumber()
+	public String getPhonenumber()
 	{
 		return Phonenumber;
 	}
