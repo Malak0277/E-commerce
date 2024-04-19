@@ -11,4 +11,8 @@ public class OrderHistory {
 	    public int getOrdersHistorysize() {
 	        return orderHistory.size();
 	    }
+	    public Order getOrder(int index) {
+	        if (index >= 0 && index < orderHistory.size()) 
+	            return orderHistory.get(index);
+        } 
 }
