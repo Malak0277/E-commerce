@@ -12,7 +12,10 @@ public class OrderHistory {
 	        return orderHistory.size();
 	    }
 	    public Order getOrder(int index) {
-	        if (index >= 0 && index < orderHistory.size()) 
+		    if (index >= 0 && index < orderHistory.size()) {
 	            return orderHistory.get(index);
+	        } else {
+	            return null;
+	        }
         } 
 }
