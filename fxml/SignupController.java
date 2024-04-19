@@ -70,7 +70,9 @@ public class SignupController {
 
         // todo: check that username doesn't already exist in the database
 
-        User user = new User(firstName, lastName, username, password);
+        User user = new User();
+        user.CreateAccount(firstName, lastName, username, password);
+
         // todo: add to database
 
         // todo: go to homepage

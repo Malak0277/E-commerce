@@ -38,6 +38,17 @@ public class PaymentController {
     private ChoiceBox<String> yearChoiceBox;
 
     @FXML
+    void nextBtnOnAction(ActionEvent event) {
+        UsernameTF.setText("");
+        PasswordTF.setText("");
+    }
+
+    @FXML
+    void backBtnOnAction(ActionEvent event) {
+        //todo: go to homepage
+    }
+
+    @FXML
     public void initialize() {
         // Add values to the month and year ChoiceBoxes
 
@@ -78,5 +89,13 @@ public class PaymentController {
                 number.setText(newValue.substring(0, 16));
             }
         });
+
+
+
+
+
+    nextBtn.setOnAction(eveOnAction(event));
+    backBtn.setOnAction(event -> backBtnOnAction(event));
+
     }
 }

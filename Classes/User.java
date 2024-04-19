@@ -7,7 +7,7 @@ public class User {
 	private String Password;
 	private ArrayList<Visa> Visas;
 	private Cart myCart;
-	private ArrayList<Order> Order;
+	private ArrayList<Order> Orders;
 
 	private static ArrayList<User> Accounts;
 	
@@ -22,7 +22,7 @@ public class User {
 	}
 	
 	
-	public voisd CreateAccount(String FN, String LN, String UserName, String Password, String Password2)
+	public void CreateAccount(String FN, String LN, String UserName, String Password, String Password2)
 	{   
 		User e = new User(FN, LN, UserName, Password);
 
@@ -31,7 +31,7 @@ public class User {
 
 	public User getUser()
 	{
-		User foundUser; 
+		User foundUser = null;
 
 		for( User user : Accounts)
 		{
@@ -58,11 +58,11 @@ public class User {
 	}
 
 	public void addOrder(Order o){
-		Order.add(o);
+		Orders.add(o);
 	}
 	
 	public void addVisa(Visa Visa){	
-		this.Visas.add(Visa);
+		Visas.add(Visa);
 	}
 
 	public void addCart(Cart cart){	
