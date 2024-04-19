@@ -1,13 +1,15 @@
+import java.util.ArrayList;
+
 public class User {
     private String FN;
 	private String LN;
 	private String UserName;
-	private String Address;
-	private String Phonenumber;
 	private String Password;
-	private Visa Visa;
-	private Cart Cart;
-	private Order Order;
+	private ArrayList<Visa> Visas;
+	private Cart myCart;
+	private ArrayList<Order> Order;
+
+	private static ArrayList<User> Accounts;
 	
 	public User(){}
 	
@@ -20,49 +22,62 @@ public class User {
 	}
 	
 	
-	public boolean CreateAccount(String FN, String LN, String UserName, String Password, String Password2)
+	public voisd CreateAccount(String FN, String LN, String UserName, String Password, String Password2)
 	{   
-		if(Password.equals(Password2)){ //check in database for no duplication for username
-			new User(FN, LN, UserName, Password);
-			return true;
-		}
-		else 
-			return false;
-	}
-	
-	
-	public boolean login(String UserName, String Password){
-		return false;
+		User e = new User(FN, LN, UserName, Password);
+
+		Accounts.add(e);
 	}
 
-	public void orderRequest(String Address, String Phonenumber)
+	public User getUser()
 	{
-		this.Address = Address;
-		this.Phonenumber = Phonenumber;
+		User foundUser; 
+
+		for( User user : Accounts)
+		{
+			if (user.getUsername().equalsIgnoreCase(UserName)) 
+			{
+                foundUser = user;
+                break;
+            }
+		}
+		return foundUser;
 	}
 	
-	public void visa(Visa Visa)
+	public boolean login(String UserName, String Password)
 	{
-		this.Visa = Visa;
+		User foundUser = getUser();
+
+		if (foundUser != null) 
+		{
+			if(foundUser.getPassword() == password)
+            	return true;
+        } 
+
+        return false;
+	}
+
+	public void addOrder(Order o){
+		Order.add(o);
 	}
 	
-	public String getUserName()
-	{
+	public void addVisa(Visa Visa){	
+		this.Visas.add(Visa);
+	}
+
+	public void addCart(Cart cart){	
+		this.myCart = cart;
+	}
+	
+	public String getUserName(){
 		return UserName;
 	}
-	
-	public String getAddress()
-	{
-		return Address;
+
+	public String getPassword(){
+		return password;
 	}
 	
-	public String getPhonenumber()
-	{
-		return Phonenumber;
+	public ArrayList<Visa> get_visas(){
+		return Visas;
 	}
-	
-	/*public String[] get_visa()
-	{
-		return Visa.get_Visas();
-	}*/
 }

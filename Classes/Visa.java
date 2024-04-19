@@ -1,4 +1,5 @@
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Visa {
@@ -8,6 +9,8 @@ public class Visa {
 	private int year;
 	private int cvv;
 	
+	private ArrayList<Visa> AllVisas;
+
 	public Visa(){}
 
 	public Visa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
@@ -36,25 +39,41 @@ public class Visa {
 	{
 		if(this.validvisa())
 		{
-			new Visa(visa_holder_name, Visa_no, month, year, cvv);
+			Visa v = new Visa(visa_holder_name, Visa_no, month, year, cvv);
+			AllVisas.add(v);
 			return true;
 		}
-		
 		return false;		
 	}
 	
-	/*public String[] get_Visas()
+	public visa get_Visas(String visano)
 	{
-		String [] info = {this.Visa_no};
-		
-		return info;
+		Visa foundvisaa;
+		for( Visa v : AllVisas)
+		{
+			if (v.getvisano().equalsIgnoreCase(visano)) 
+			{
+                foundvisaa = v;
+                break;
+            }
+		}
+		return visaa;
 	}
 	
-	public boolean CVV_check(int cvv, String Visa_no)
-	{
-		if(cvv == this.cvv)
-			return true;
-		
+	public boolean CVV_check(int cvv, String Visa_no){
+		Visa v = get_Visas(Visa_no);
+		if(v != null){
+			if(cvv == v.getcvv())
+				return true;
+		}
 		return false;
-	}*/
+	}
+
+	public String getvisano(){
+		return Visa_no;
+	}
+
+	public int getcvv(){
+		return cvv;
+	}
 }

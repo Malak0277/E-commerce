@@ -17,7 +17,7 @@ public class PaymentExistingCardController {
     private Button backBtn;
 
     @FXML
-    private ListView<?> cards;
+    private ListView<Visa> cards;
 
     @FXML
     private PasswordField cvv;

@@ -11,8 +11,15 @@ public class Order {
 	private String status;
 	private String OrderID;
     private Timer timer;
+    private String Address;
+	private String Phonenumber;
 	
-	
+	public void orderRequest(String Address, String Phonenumber)
+	{
+		this.Address = Address;
+		this.Phonenumber = Phonenumber;
+	}
+
 	public Order (Cart cart, double totPrice, String status)
 	{
 		this.cart = cart;
@@ -22,6 +29,7 @@ public class Order {
         this.timer = new Timer();
         scheduleStatusUpdate();
 	}
+
     private void scheduleStatusUpdate() {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -30,6 +38,7 @@ public class Order {
             }
         }, 0, 120 * 1000); // 120 seconds = 2 minute
     }
+    
     private void updateOrderStatus() {
             if (status.equals("Order_Placed")) {
                 setStatus("Packed");

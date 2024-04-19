@@ -26,7 +26,6 @@ public class Cart {
         setTotalPrice();
     }
 
-
     public void removeFromCart(Item item) {
         int index = myItems.indexOf(item);
         if (index == -1)
