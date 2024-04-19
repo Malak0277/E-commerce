@@ -19,6 +19,10 @@ public class User {
 		this.LN = LN;
 		this.UserName = UserName;
 		this.Password = Password;
+		Orders = new ArrayList<>();
+		Visas = new ArrayList<>();
+		myCart = new Cart();
+
 	}
 	
 	
@@ -46,12 +50,27 @@ public class User {
 	
 	public boolean login(String UserName, String Password)
 	{
+		if(Accounts.isEmpty())
+			return false;
+			
 		User foundUser = getUser();
 
 		if (foundUser != null) 
 		{
 			if(foundUser.Password == Password)
             	return true;
+        } 
+
+        return false;
+	}
+
+	public boolean signup(String UserName)
+	{
+		User foundUser = getUser();
+
+		if (foundUser == null) 
+		{	
+			return true;
         } 
 
         return false;
