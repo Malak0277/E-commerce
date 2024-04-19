@@ -12,6 +12,8 @@ public class Cart {
     }
 
     public void addToCart(Item item, int amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException("Amount must be positive.");
         int index = myItems.indexOf(item);
         if (index == -1) {
             myItems.add(item);
@@ -21,30 +23,31 @@ public class Cart {
             int newAmount = oldAmount + amount;
             itemAmounts.set(index, newAmount);
         }
-
         setTotalPrice();
     }
 
+
     public void removeFromCart(Item item) {
         int index = myItems.indexOf(item);
-        myItems.remove(index);
-        itemAmounts.remove(index);
-
-        setTotalPrice();
+        if (index == -1)
+            throw new IllegalArgumentException("Item not found in cart.");
+        else {
+            myItems.remove(index);
+            itemAmounts.remove(index);
+            setTotalPrice();
+        }
     }
 
     public void emptyCart() {
         myItems.clear();
         itemAmounts.clear();
-
         setTotalPrice();
     }
 
     public void setTotalPrice() {
         double price = 0;
-        for (int i = 0; i < myItems.size(); i++) {
+        for (int i = 0; i < myItems.size(); i++)
             price += myItems.get(i).getPrice() * itemAmounts.get(i);
-        }
         totalPrice = price;
     }
 

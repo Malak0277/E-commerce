@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Catalog {
+    private String name;
     private List<Item> items;
 
     public Catalog() {
@@ -17,25 +18,28 @@ public class Catalog {
     }
 
     public Item getItem(String bookName) {
-        for (Item item : items) {
-            if (item.getBookName() == bookName) {
+        for (Item item : items)
+            if (item.getName() == bookName)
                 return item;
-            }
-        }
-        return null; // Item not found
+        return null;
     }
 
-    public List<Item> listItems() {
+    public List<Item> getAllItems() {
         return items;
     }
 
-    public List<Item> searchItems(String keyword) {
+    public boolean isIn(String bookName) {
+        for (Item item : items)
+            if (item.getName() == bookName)
+                return true;
+        return false;
+    }
+
+    public List<Item> searchIn(String keyword) {
         List<Item> searchResults = new ArrayList<>();
-        for (Item item : items) {
-            if (item.getBookName().toLowerCase().contains(keyword.toLowerCase())) {
+        for (Item item : items)
+            if (item.getName().toLowerCase().contains(keyword.toLowerCase()))
                 searchResults.add(item);
-            }
-        }
         return searchResults;
     }
 
