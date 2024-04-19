@@ -19,6 +19,10 @@ public class User {
 		this.LN = LN;
 		this.UserName = UserName;
 		this.Password = Password;
+		Orders = new ArrayList<>();
+		Visas = new ArrayList<>();
+		myCart = new Cart();
+
 	}
 	
 	
