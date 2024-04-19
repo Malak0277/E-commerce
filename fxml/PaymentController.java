@@ -4,6 +4,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.KeyEvent;
+import java.util.function.UnaryOperator;
+import javafx.scene.control.TextFormatter;
 
 public class PaymentController {
 
@@ -20,7 +23,7 @@ public class PaymentController {
     private PasswordField cvv;
 
     @FXML
-    private ChoiceBox<?> monthChoiceBox;
+    private ChoiceBox<String> monthChoiceBox;
 
     @FXML
     private TextField name;
@@ -32,7 +35,7 @@ public class PaymentController {
     private TextField number;
 
     @FXML
-    private ChoiceBox<?> yearChoiceBox;
+    private ChoiceBox<String> yearChoiceBox;
 
     @FXML
     public void initialize() {

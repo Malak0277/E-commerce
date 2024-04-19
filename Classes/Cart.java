@@ -3,27 +3,29 @@ import java.util.ArrayList;
 public class Cart {
     private ArrayList<Item> myItems;
     private ArrayList<Integer> itemAmounts;
-	private double totalPrice;
+    private double totalPrice;
 
+    public Cart() {
+        this.myItems = new ArrayList<>();
+        this.itemAmounts = new ArrayList<>();
+        this.totalPrice = 0.0;
+    }
 
-    public Cart(){ }
-
-    public void addToCart(Item item, int amount){
+    public void addToCart(Item item, int amount) {
         int index = myItems.indexOf(item);
-        if (index == -1){
+        if (index == -1) {
             myItems.add(item);
             itemAmounts.add(amount);
-        }
-        else{
+        } else {
             int oldAmount = itemAmounts.get(index);
-            int newAmount = oldAmount + amount; 
-            itemAmounts.set(index, newAmount); 
+            int newAmount = oldAmount + amount;
+            itemAmounts.set(index, newAmount);
         }
 
         setTotalPrice();
     }
 
-    public void removeFromCart(Item item){
+    public void removeFromCart(Item item) {
         int index = myItems.indexOf(item);
         myItems.remove(index);
         itemAmounts.remove(index);
@@ -31,19 +33,22 @@ public class Cart {
         setTotalPrice();
     }
 
-    public void emptyCart(){
+    public void emptyCart() {
         myItems.clear();
         itemAmounts.clear();
 
         setTotalPrice();
     }
 
-    public void setTotalPrice(){
+    public void setTotalPrice() {
         double price = 0;
         for (int i = 0; i < myItems.size(); i++) {
             price += myItems.get(i).getPrice() * itemAmounts.get(i);
         }
         totalPrice = price;
     }
-    
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 }
