@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Visa {
-    private String visa_holder_name;
+	private String visa_holder_name;
 	private String Visa_no;
 	private int month;
 	private int year;
 	private int cvv;
-	
+
 	private ArrayList<Visa> AllVisas;
 
 	public Visa(){}
@@ -21,20 +21,20 @@ public class Visa {
 		this.year = year;
 		this.cvv = cvv;
 	}
-	
+
 	public boolean validvisa()
 	{
 		Calendar cal = Calendar.getInstance();
 		if (this.year < cal.get(Calendar.YEAR))
 			return false;
-		
+
 		else if(this.year == Year.now().getValue())
 			if(this.month < cal.get(Calendar.MONTH))
 				return false;
-		
+
 		return true;
 	}
-	
+
 	public boolean addVisa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
 	{
 		if(this.validvisa())
@@ -43,37 +43,29 @@ public class Visa {
 			AllVisas.add(v);
 			return true;
 		}
-		return false;		
-	}
-	
-	public visa get_Visas(String visano)
-	{
-		Visa foundvisaa;
-		for( Visa v : AllVisas)
-		{
-			if (v.getvisano().equalsIgnoreCase(visano)) 
-			{
-                foundvisaa = v;
-                break;
-            }
-		}
-		return visaa;
-	}
-	
-	public boolean CVV_check(int cvv, String Visa_no){
-		Visa v = get_Visas(Visa_no);
-		if(v != null){
-			if(cvv == v.getcvv())
-				return true;
-		}
 		return false;
 	}
 
-	public String getvisano(){
-		return Visa_no;
+	public Visa get_Visas(String visano)
+	{
+		Visa foundvisaa = null;
+		for( Visa v : AllVisas)
+		{
+			if (v.Visa_no .equalsIgnoreCase(visano))
+			{
+				foundvisaa = v;
+				break;
+			}
+		}
+		return foundvisaa;
 	}
 
-	public int getcvv(){
-		return cvv;
+	public boolean CVV_check(int cvv, String Visa_no){
+		Visa v = get_Visas(Visa_no);
+		if(v != null){
+			if(cvv == v.cvv)
+				return true;
+		}
+		return false;
 	}
 }

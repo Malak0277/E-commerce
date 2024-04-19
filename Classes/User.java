@@ -35,7 +35,7 @@ public class User {
 
 		for( User user : Accounts)
 		{
-			if (user.getUsername().equalsIgnoreCase(UserName)) 
+			if (user.UserName.equalsIgnoreCase(UserName)) 
 			{
                 foundUser = user;
                 break;
@@ -50,7 +50,7 @@ public class User {
 
 		if (foundUser != null) 
 		{
-			if(foundUser.getPassword() == password)
+			if(foundUser.Password == Password)
             	return true;
         } 
 
@@ -67,14 +67,6 @@ public class User {
 
 	public void addCart(Cart cart){	
 		this.myCart = cart;
-	}
-	
-	public String getUserName(){
-		return UserName;
-	}
-
-	public String getPassword(){
-		return password;
 	}
 	
 	public ArrayList<Visa> get_visas(){
