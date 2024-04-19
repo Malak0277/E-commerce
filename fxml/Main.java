@@ -23,7 +23,7 @@ public class Main extends Application {
 	                Parent omangementContent = fxmlLoader.load();
 	                
 	                OmangementController controller = fxmlLoader.getController();
-	                String orderStatus = o1.getOrder(orderNumber).getOrderStatus();
+	                String orderStatus = ((OrderHistory) o1).getOrder(orderNumber).getStatus();
 	                controller.initialize(orderStatus);
 	                
 	                vbox.getChildren().add(omangementContent);
