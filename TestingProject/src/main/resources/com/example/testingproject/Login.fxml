@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="LoginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="761.0" style="-fx-background-color: white;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.LoginController">
+    <children>
+        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="409.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../images/login_signup/icon1.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="409.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../images/login_signup/lock.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="UsernameTF" layoutX="475.0" layoutY="138.0" prefHeight="26.0" prefWidth="215.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;">
+            <font>
+                <Font name="Goudy Old Style" size="18.0" />
+            </font>
+        </TextField>
+        <PasswordField fx:id="PasswordTF" layoutX="475.0" layoutY="192.0" prefHeight="26.0" prefWidth="215.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;">
+            <font>
+                <Font name="Goudy Old Style" size="18.0" />
+            </font>
+        </PasswordField>
+        <Button fx:id="LoginButton" layoutX="517.0" layoutY="273.0" mnemonicParsing="false" onAction="#LoginButtonOnAction" prefHeight="38.0" prefWidth="91.0" style="-fx-background-color: transparent;" text="Login" textAlignment="CENTER" textFill="#7b6a46" AnchorPane.bottomAnchor="208.0" AnchorPane.leftAnchor="517.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="273.0">
+            <font>
+                <Font name="Goudy Old Style Bold" size="18.0" />
+            </font>
+            <styleClass>
+                <String fx:value="Button" />
+                <String fx:value="LoginButton" />
+            </styleClass>
+        </Button>
+        <Button fx:id="SignupButton" layoutX="505.0" layoutY="361.0" mnemonicParsing="false" onAction="#SignupButtonOnAction" prefHeight="41.0" prefWidth="117.0" style="-fx-background-color: transparent;" text="Signup for Free!" textAlignment="CENTER" textFill="#7b6a46" underline="true" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="139.0" AnchorPane.topAnchor="361.0">
+            <font>
+                <Font name="Goudy Old Style Bold" size="14.0" />
+            </font>
+            <styleClass>
+                <String fx:value="Button" />
+                <String fx:value="SignupButton" />
+            </styleClass>
+        </Button>
+        <Button fx:id="CancelButton" layoutX="664.0" layoutY="468.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" style="-fx-background-color: transparent;" styleClass="CancelButton" text="CANCEL" textFill="#7b6a46" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="664.0" AnchorPane.rightAnchor="14.799999999999997" AnchorPane.topAnchor="468.0">
+            <font>
+                <Font name="Goudy Old Style" size="14.0" />
+            </font>
+        </Button>
+        <Text fill="#7b6a46" layoutX="498.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" wrappingWidth="131.20001220703125" AnchorPane.bottomAnchor="152.677734375" AnchorPane.leftAnchor="498.0" AnchorPane.rightAnchor="131.79998779296875" AnchorPane.topAnchor="353.4765625">
+            <font>
+                <Font name="Goudy Old Style" size="14.0" />
+            </font>
+        </Text>
+        <Label fx:id="LoginMessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="435.0" layoutY="246.0" prefHeight="27.0" prefWidth="277.0" textAlignment="CENTER" textFill="#bf2727">
+            <font>
+                <Font name="Goudy Old Style" size="14.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="530.0" fitWidth="376.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../images/login_signup/login.jpeg" />
+            </image>
+        </ImageView>
+        <Text fill="#665220d6" layoutX="461.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME !" wrappingWidth="224.79997558593755">
+            <font>
+                <Font name="Goudy Old Style Bold" size="37.0" />
+            </font>
+        </Text>
+        <Label layoutX="17.0" layoutY="61.0" opacity="0.39" text="BookStore" textFill="#2b2929">
+            <font>
+                <Font name="Goudy Old Style" size="82.0" />
+            </font>
+        </Label>
+        <Label layoutX="7.0" layoutY="61.0" text="BookStore" textFill="#c9c0c0">
+            <font>
+                <Font name="Goudy Old Style" size="82.0" />
+            </font>
+        </Label>
+        <Label layoutX="14.0" layoutY="157.0" prefHeight="38.0" prefWidth="405.0" text="Open the Door to Literary Adventures" textFill="#d7d1d1">
+            <font>
+                <Font name="Bell MT Italic" size="23.0" />
+            </font>
+            <effect>
+                <Glow />
+            </effect>
+        </Label>
+    </children>
+</AnchorPane>
