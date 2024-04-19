@@ -26,8 +26,6 @@ public class OrderRequestController {
     @FXML
     private ChoiceBox<String> methodChoiceBox;
     
-    
-    
     @FXML
     private RadioButton newRadioBox;
 
@@ -41,16 +39,34 @@ public class OrderRequestController {
     private ToggleGroup visaSelection;
 
     @FXML
-    public void initialize() {
-        // Add options to the ChoiceBox
-        methodChoiceBox.getItems().addAll("Cash", "Visa");
+    void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
+        if ("Cash".equals(selectedOption)) {
+            // todo: go to OManagement
+        } else {
+            if("Existing Visa".equals(selectedRadio)){
+            // todo: go to paymentExistingCard
+        }
+        else{
+            // todo: go to payment
+        }
+        }
+    }
+
+    @FXML
+    void backBtnOnAction(ActionEvent event, String selectedOption) {
+        // todo: go to homepage
+    }
+
     
-        // Set a default selection if needed
+    @FXML
+    public void initialize() {
+        methodChoiceBox.getItems().addAll("Cash", "Visa");
         methodChoiceBox.getSelectionModel().selectFirst();
+        String selectedOption = methodChoiceBox.getValue();
+        String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();
     
         // Add event listener to the ChoiceBox
         methodChoiceBox.setOnAction(event -> {
-            String selectedOption = methodChoiceBox.getValue();
             if ("Cash".equals(selectedOption)) {
                 existingRadioBox.setVisible(false);
                 newRadioBox.setVisible(false);
@@ -59,6 +75,11 @@ public class OrderRequestController {
                 newRadioBox.setVisible(true);
             }
         });
+
+        nextBtn.setOnAction(event -> {
+            nextBtnnOnAction(event, selectedOption, selectedRadio);
+        });
+        nbackBtn.setOnAction(event -> backBtnOnAction(event));
     }
 
 }
