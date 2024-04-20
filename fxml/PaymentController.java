@@ -1,12 +1,17 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.KeyEvent;
+
+import java.io.IOException;
 import java.util.function.UnaryOperator;
-import javafx.scene.control.TextFormatter;
+
+import javafx.stage.Stage;
 
 public class PaymentController {
 
@@ -45,52 +50,56 @@ public class PaymentController {
         String cardHolder = name.getText();
         String num = number.getText();
         String cv = cvv.getText();
-        String month = monthChoiceBox.getValue();
-        String year = yearChoiceBox.getValue();
+        String monthStr = monthChoiceBox.getValue();
+        String yearStr = yearChoiceBox.getValue();
+
+        int Month = Integer.parseInt(monthStr);
+        int Year = Integer.parseInt(yearStr);
+        int cvv = Integer.parseInt(cv);
 
         // Check if any of the text fields are empty
         if (cardHolder.isEmpty() || num.isEmpty() || cv.isEmpty()) {
             MessageLabel.setText("Please fill in all fields");
-            return; 
+            return;
         }
 
         if(cv.length() < 3){
-            MessageLabel.setText("Incomplete cvv"); 
-            return; 
+            MessageLabel.setText("Incomplete cvv");
+            return;
         }
 
         Visa visa = new Visa();
 
-        if(!visa.validvisa()){
+        if(!visa.validvisa(Year, Month)){
             MessageLabel.setText("Invlaid Visa");
-            return;           
+            return;
         }
 
-
-
+        visa.addVisa(cardHolder, num, Year, Month, cvv);
 
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource("Omangement.fxml")); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();}
+        catch (IOException e) {}
+
     }
 
     @FXML
     void backBtnOnAction(ActionEvent event) {
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource("orderRequest.fxml")); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
+        try {
+            FXMLLoader loader = new FXMLLoader (getClass().getResource("orderRequest.fxml"));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();}
+        catch (IOException e) {}
     }
 
     @FXML
@@ -115,7 +124,7 @@ public class PaymentController {
                 event.consume();
             }
         });
-        
+
         // Allow only letters for Cardholder's name
         UnaryOperator<TextFormatter.Change> nameFilter = change -> {
             if (change.getText().matches("[a-zA-Z]+")) {
@@ -135,12 +144,7 @@ public class PaymentController {
             }
         });
 
-
-
-
-
-    nextBtn.setOnAction(eveOnAction(event));
-    backBtn.setOnAction(event -> backBtnOnAction(event));
-
+        nextBtn.setOnAction(event -> nextBtnOnAction(event));
+        backBtn.setOnAction(event -> backBtnOnAction(event));
     }
 }

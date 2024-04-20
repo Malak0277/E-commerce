@@ -14,7 +14,7 @@ public class Visa {
 
 	public Visa(){}
 
-	public Visa(String visa_holder_name, String Visa_no, int month, int year, int cvv, User user)
+	public Visa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
 	{
 		this.visa_holder_name = visa_holder_name;
 		this.Visa_no = Visa_no;
@@ -23,25 +23,25 @@ public class Visa {
 		this.cvv = cvv;
 	}
 
-	public boolean validvisa()
+	public boolean validvisa(int year, int month)
 	{
 		Calendar cal = Calendar.getInstance();
-		if (this.year < cal.get(Calendar.YEAR))
+		if (year < cal.get(Calendar.YEAR))
 			return false;
-		else if (this.year > cal.get(Calendar.YEAR)+5)
-			return false;
-		else if(this.year == Year.now().getValue())
-			if(this.month < cal.get(Calendar.MONTH))
+		else if (year > cal.get(Calendar.YEAR)+5)
+			return true;
+		else if(year == Year.now().getValue())
+			if(month < cal.get(Calendar.MONTH))
 				return false;
 
 		return true;
 	}
 
-	public boolean addVisa(String visa_holder_name, String Visa_no, int month, int year, int cvv, User user)
+	public boolean addVisa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
 	{
-		if(validvisa())
+		if(validvisa(year, month))
 		{
-			Visa v = new Visa(visa_holder_name, Visa_no, month, year, cvv, user);
+			Visa v = new Visa(visa_holder_name, Visa_no, month, year, cvv);
 			AllVisas.add(v);
 			return true;
 		}

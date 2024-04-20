@@ -1,10 +1,14 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class OrderRequestController {
 
@@ -44,14 +48,15 @@ public class OrderRequestController {
     @FXML
     void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
         String ad = address.getText();
+        String phoneNumber = phoneNo.getText();
         
         // Allow only numbers and limit Card Number to maximum 16 characters
-        phoneNumber.textProperty().addListener((observable, oldValue, newValue) -> {
+        phoneNo.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                number.setText(newValue.replaceAll("[^\\d]", ""));
+                phoneNo.setText(newValue.replaceAll("[^\\d]", ""));
             }
-            if (newValue.length() >= 11) {
-                number.setText(newValue.substring(0, 16));
+            if (newValue.length() > 11) {
+                phoneNo.setText(oldValue); // Restore the previous value if it exceeds 11 characters
             }
         });
 
@@ -61,15 +66,15 @@ public class OrderRequestController {
             return; 
         }
 
-        if(phoneNumber.length < 11){
+        if(phoneNumber.length() < 11){ // Corrected method to get text length
             MessageLabel.setText("Phone number too short");
-            return; 
+            return;
         }
 
         Order o = new Order();
         o.orderRequest(ad, phoneNumber);
 
-        if ("Cash".equals(selectedOption)) {
+        if (selectedOption.equals("Cash")) {
             Parent root;
             try {
                     FXMLLoader loader = new FXMLLoader (getClass().getResource("Omangement.fxml")); 
@@ -80,10 +85,10 @@ public class OrderRequestController {
                     stage.show();} 
             catch (IOException e) {}
         } else {
-            if("Existing Visa".equals(selectedRadio)){
+            if(selectedRadio.equals("Existing Visa")){
                 Parent root;
                 try {
-                        FXMLLoader loader = new FXMLLoader (getClass().getResource("paymentExistingCard.fxml")); 
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("paymentExistingCard.fxml"));
                         root = loader.load();
                         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         Scene scene = new Scene(root);
@@ -106,7 +111,7 @@ public class OrderRequestController {
     }
 
     @FXML
-    void backBtnOnAction(ActionEvent event, String selectedOption) {
+    void backBtnOnAction(ActionEvent event) {
         // todo: go to homepage
     }
 
@@ -121,7 +126,7 @@ public class OrderRequestController {
     
         // Add event listener to the ChoiceBox
         methodChoiceBox.setOnAction(event -> {
-            if ("Cash".equals(selectedOption)) {
+            if (selectedOption.equals("Cash")) {
                 existingRadioBox.setVisible(false);
                 newRadioBox.setVisible(false);
             } else {
