@@ -17,28 +17,17 @@ public class Visa {
 	public boolean validvisa(int year, int month)
 	{
 		Calendar cal = Calendar.getInstance();
-		if (year < cal.get(Calendar.YEAR))
-			return false;
-		else if (year > cal.get(Calendar.YEAR)+5)
-			return false;
-		else if(year == Year.now().getValue())
-			if(month < cal.get(Calendar.MONTH))
-				return false;
+		int currentYear = cal.get(Calendar.YEAR)% 100;
+		int currentMonth = cal.get(Calendar.MONTH) + 1;
 
+		if (year < currentYear || year > currentYear + 5) {
+			return false;
+		}
+		else if (year == currentYear && month < currentMonth) {
+			return false;
+		}
 		return true;
 	}
-
-	public boolean addVisa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
-	{
-		if(validvisa(year, month))
-		{
-			Visa v = new Visa(visa_holder_name, Visa_no, month, year, cvv);
-			AllVisas.add(v);
-			return true;
-		}
-		return false;
-	}
-
 
 	public boolean CVV_check(int cvv){
 		if(this.cvv == cvv)
@@ -47,5 +36,8 @@ public class Visa {
 		return false;
 	}
 
+	public String getVisaNumber(){
+		return Visa_no;
+	}
 	
 }

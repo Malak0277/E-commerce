@@ -35,6 +35,13 @@ public class OmangementController {
         }
         
 	}
+
+	@FXML
+    void backBtnOnAction(ActionEvent event) {
+        navigateTo(event, "Catalog.fxml");
+    }
+
+	@FXML
 	public void initialize(String status) {
 	    // Set the initial visibility and disable state
 	    i2.setVisible(false);
@@ -62,7 +69,6 @@ public class OmangementController {
 				i2.setVisible(false);
 				i3.setVisible(false);
 				i4.setVisible(false);
-				i5.setVisible(false);
 	            i5.setVisible(true);
 	            i6.setDisable(true);
 	            break;
@@ -70,8 +76,22 @@ public class OmangementController {
 	            break;
 	    }
 
-		
+		backBtn.setOnAction(event -> backBtnOnAction(event));
+
 	}
+
+
+	public void navigateTo(ActionEvent event, String nextPageFXML) {
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
+    }
 
 }
 

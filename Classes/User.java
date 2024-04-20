@@ -34,18 +34,16 @@ public class User {
 		Accounts.add(e);
 	}
 
-	public User getUser()
+	public User getUser(String UserName)
 	{
-		User foundUser = null;
-
 		for (int i = 0; i < Accounts.size(); i++) {
-            User user = Accounts.get(i);
-            if (user.getUserName().equalsIgnoreCase(UserName)) {
-                userIndex = i; 
-                return user;
-            }
-        }
-        userIndex = -1;
+			User user = Accounts.get(i);
+			if (user.getUserName().equalsIgnoreCase(UserName)) {
+				userIndex = i;
+				return user;
+			}
+		}
+		userIndex = -1;
 		return null;
 	}
 
@@ -54,7 +52,7 @@ public class User {
 		if(Accounts.isEmpty())
 			return false;
 
-		User foundUser = getUser();
+		User foundUser = getUser(UserName);
 
 		if (foundUser != null)
 		{
@@ -67,7 +65,7 @@ public class User {
 
 	public boolean signup(String UserName)
 	{
-		User foundUser = getUser();
+		User foundUser = getUser(UserName);
 
 		if (foundUser == null)
 		{
@@ -100,6 +98,19 @@ public class User {
 
 	public ArrayList<Visa> get_visas(){
 		return Visas;
+	}
+
+	public ArrayList<Order> get_orders(){
+		return Orders;
+	}
+
+	public Order getOrder(String OrderID){
+		for (Order order : Orders) {
+            if (order.getOrderID().equals(OrderID)){
+				return order;
+			}
+        }
+		return null;
 	}
 
 	public String getUserName(){

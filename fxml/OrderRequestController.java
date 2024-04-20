@@ -79,7 +79,7 @@ public class OrderRequestController {
         Order.currrentOrder.orderRequest(ad, phoneNumber);
 
         if (selectedOption.equals("Cash")) {
-            navigateTo(event, "Omangement.fxml");
+            navigateToOmangement(event, "Order_Placed");
 
         } else {
             if(selectedRadio.equals("Existing Visa")){
@@ -103,6 +103,38 @@ public class OrderRequestController {
     }
 
     
+    
+
+
+    public void navigateTo(ActionEvent event, String nextPageFXML) {
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
+    }
+
+    public void navigateToOmangement(ActionEvent event, String status){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
+            Parent root = loader.load();
+
+            // Pass the status to the initialize method of OmangementController
+            OmangementController omangementController = loader.getController();
+            omangementController.initialize(status);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     public void initialize() { 
 
@@ -120,7 +152,6 @@ public class OrderRequestController {
                 newRadioBox.setVisible(true);
             }
         });
-
         nextBtn.setOnAction(event -> {
             String selectedOption = methodChoiceBox.getValue();
             String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();
@@ -129,18 +160,4 @@ public class OrderRequestController {
 
         backBtn.setOnAction(event -> backBtnOnAction(event));
     }
-
-    public void navigateTo(ActionEvent event, String nextPageFXML) {
-        Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
-    }
-
-
 }

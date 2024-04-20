@@ -75,13 +75,12 @@ public class PaymentController {
             return;
         }
 
-
-        visa.addVisa(cardHolder, num, Year, Month, cvv);
+        visa = new Visa(num, cvv);
         User.getCurrentUser().addVisa(visa);
 
-        User.getCurrentUser.addOrder(Order.currrentOrder);
+        User.getCurrentUser().addOrder(Order.currrentOrder);
 
-        navigateTo(event, "Omangement.fxml");
+        navigateToOmangement(event, "Order_Placed");
 
     }
 
@@ -149,6 +148,24 @@ public class PaymentController {
                     stage.setScene(scene);
                     stage.show();} 
             catch (IOException e) {}
+    }
+
+    public void navigateToOmangement(ActionEvent event, String status){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
+            Parent root = loader.load();
+
+            // Pass the status to the initialize method of OmangementController
+            OmangementController omangementController = loader.getController();
+            omangementController.initialize(status);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
