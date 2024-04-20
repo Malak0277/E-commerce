@@ -53,6 +53,6 @@ public class Item {
     }
 
     public String getImage() {
-        return image;
+        return "..\\images\\Books\\" + image;
     }
 }

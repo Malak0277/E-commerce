@@ -27,7 +27,6 @@ public class ItemController implements Initializable {
 
 
     private Item item;
-    private Image image;
 
     private SpinnerValueFactory<Integer> spin;
 
@@ -42,7 +41,7 @@ public class ItemController implements Initializable {
         itemName.setText(item.getName());
         itemPrice.setText("$" + String.valueOf(item.getPrice()));
         //String path = "File:" + item.getImage();
-        image = new Image(item.getImage(), 200, 195, false, true);
+        Image image = new Image(getClass().getResourceAsStream(item.getImage()), 200, 195, false, true);
         itemImg.setImage(image);
     }
 
