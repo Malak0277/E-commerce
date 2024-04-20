@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,6 +12,7 @@ public class Order {
     private Timer timer;
     private String Address;
     private String Phonenumber;
+    public static Order currrentOrder = null;
 
 
     public Order(){
@@ -41,7 +41,7 @@ public class Order {
             public void run() {
                 updateOrderStatus();
             }
-        }, 0, 120 * 1000); // 120 seconds = 2 minute
+        }, 0, 120 * 1000); // 120 seconds = 2 minutes
     }
 
     private void updateOrderStatus() {

@@ -37,6 +37,7 @@ public class LoginController {
     void CancelButtonOnAction(ActionEvent event) {
         UsernameTF.setText("");
         PasswordTF.setText("");
+        LoginMessageLabel.setText("");
     }
 
     @FXML
@@ -46,23 +47,34 @@ public class LoginController {
 
         // Check if any of the text fields are empty
         if (username.isEmpty() || password.isEmpty()) {
-            signupmessageLabel.setText("Please fill in all fields");
+            LoginMessageLabel.setText("Please fill in all fields");
             return; 
         }
         
         User user = new User();
         if(user.login(username, password)){
-            // todo: go to homepage
-        } else {
+            navigateTo(event, "Catalog.fxml");
+        }
+        else {
             LoginMessageLabel.setText("Wrong username or password");
         }
     }
 
     @FXML
     void SignupButtonOnAction(ActionEvent event) {
+        navigateTo(event, "Signup.fxml");
+    }
+
+    @FXML
+    public void initialize() {
+        LoginButton.setOnAction(event -> LoginButtonOnAction(event));
+        CancelButton.setOnAction(event -> CancelButtonOnAction(event));
+    }
+
+    public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
             try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource("Signup.fxml")); 
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
                     root = loader.load();
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
@@ -71,10 +83,5 @@ public class LoginController {
             catch (IOException e) {}
     }
 
-    @FXML
-    public void initialize() {
-        LoginButton.setOnAction(event -> LoginButtonOnAction(event));
-        CancelButton.setOnAction(event -> CancelButtonOnAction(event));
-    }
 
 }

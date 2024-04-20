@@ -44,7 +44,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="nextBtn" layoutX="328.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #fff8dc;" text="Next" textFill="#665220">
+            <Button fx:id="nextBtn" layoutX="328.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #fff8dc;" text="Pay" textFill="#665220">
                <font>
                   <Font size="14.0" />
                </font>

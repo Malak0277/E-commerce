@@ -71,48 +71,35 @@ public class OrderRequestController {
             return;
         }
 
-        Order o = new Order();
-        o.orderRequest(ad, phoneNumber);
+        /* todo:
+         on clicking "order now" in cart:
+         Order o = new Order(, , ,);
+         Order.currrentOrder = o;
+         */
+        Order.currrentOrder.orderRequest(ad, phoneNumber);
 
         if (selectedOption.equals("Cash")) {
-            Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource("Omangement.fxml")); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
+            navigateTo(event, "Omangement.fxml");
+
         } else {
             if(selectedRadio.equals("Existing Visa")){
-                Parent root;
-                try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("paymentExistingCard.fxml"));
-                        root = loader.load();
-                        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();} 
-                catch (IOException e) {}
-        }
-        else{
-            Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource("payment.fxml")); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
-        }
+                User currentUser = User.getCurrentUser();
+                if (currentUser.get_visas().size() == 0){
+                    MessageLabel.setText("You have no existing visas");
+                    return;
+                }
+                navigateTo(event, "paymentExistingCard.fxml");
+
+            }
+            else{
+                navigateTo(event, "payment.fxml");
+            }
         }
     }
 
     @FXML
     void backBtnOnAction(ActionEvent event) {
-        // todo: go to homepage
+        navigateTo(event, "Catalog.fxml");
     }
 
     
@@ -121,11 +108,10 @@ public class OrderRequestController {
 
         methodChoiceBox.getItems().addAll("Visa", "Cash");
         methodChoiceBox.getSelectionModel().selectFirst();
-        String selectedOption = methodChoiceBox.getValue();
-        String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();
-    
+        
         // Add event listener to the ChoiceBox
         methodChoiceBox.setOnAction(event -> {
+            String selectedOption = methodChoiceBox.getValue();
             if (selectedOption.equals("Cash")) {
                 existingRadioBox.setVisible(false);
                 newRadioBox.setVisible(false);
@@ -136,10 +122,25 @@ public class OrderRequestController {
         });
 
         nextBtn.setOnAction(event -> {
+            String selectedOption = methodChoiceBox.getValue();
+            String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();
             nextBtnOnAction(event, selectedOption, selectedRadio);
         });
 
         backBtn.setOnAction(event -> backBtnOnAction(event));
     }
+
+    public void navigateTo(ActionEvent event, String nextPageFXML) {
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
+    }
+
 
 }

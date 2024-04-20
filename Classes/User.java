@@ -9,6 +9,8 @@ public class User {
 	private Cart myCart;
 	private ArrayList<Order> Orders;
 
+	static public int userIndex = -1;
+
 	public static ArrayList<User> Accounts = new ArrayList<>();
 
 	public User(){}
@@ -36,15 +38,15 @@ public class User {
 	{
 		User foundUser = null;
 
-		for( User user : Accounts)
-		{
-			if (user.UserName.equalsIgnoreCase(UserName))
-			{
-				foundUser = user;
-				break;
-			}
-		}
-		return foundUser;
+		for (int i = 0; i < Accounts.size(); i++) {
+            User user = Accounts.get(i);
+            if (user.getUserName().equalsIgnoreCase(UserName)) {
+                userIndex = i; 
+                return user;
+            }
+        }
+        userIndex = -1;
+		return null;
 	}
 
 	public boolean login(String UserName, String Password)
@@ -56,7 +58,7 @@ public class User {
 
 		if (foundUser != null)
 		{
-			if(foundUser.Password == Password)
+			if(foundUser.Password.equals(Password))
 				return true;
 		}
 
@@ -69,10 +71,19 @@ public class User {
 
 		if (foundUser == null)
 		{
+			userIndex = Accounts.size();
 			return true;
 		}
 
 		return false;
+	}
+
+	public static User getCurrentUser(){
+		if(userIndex >= 0 && userIndex < Accounts.size()) {
+			return Accounts.get(userIndex);
+		} else {
+			return null; 
+		}
 	}
 
 	public void addOrder(Order o){
@@ -89,5 +100,9 @@ public class User {
 
 	public ArrayList<Visa> get_visas(){
 		return Visas;
+	}
+
+	public String getUserName(){
+		return UserName;
 	}
 }

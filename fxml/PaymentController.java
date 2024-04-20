@@ -75,31 +75,19 @@ public class PaymentController {
             return;
         }
 
-        visa.addVisa(cardHolder, num, Year, Month, cvv);
 
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
-            root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();}
-        catch (IOException e) {}
+        visa.addVisa(cardHolder, num, Year, Month, cvv);
+        User.getCurrentUser().addVisa(visa);
+
+        User.getCurrentUser.addOrder(Order.currrentOrder);
+
+        navigateTo(event, "Omangement.fxml");
 
     }
 
     @FXML
     void backBtnOnAction(ActionEvent event) {
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader (getClass().getResource("orderRequest.fxml"));
-            root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();}
-        catch (IOException e) {}
+        navigateTo(event, "orderRequest.fxml");
     }
 
     @FXML
@@ -118,12 +106,15 @@ public class PaymentController {
             yearChoiceBox.getItems().add(year);
         }
 
-        // Add event filter to the CVV field to restrict input to maximum 3 characters
-        cvv.addEventFilter(KeyEvent.KEY_TYPED, event -> {
-            if (cvv.getText().length() >= 3) {
-                event.consume();
+        // Limit CVV input to maximum 3 characters using a TextFormatter
+        UnaryOperator<TextFormatter.Change> cvvFilter = change -> {
+            if (change.getControlNewText().length() <= 3) {
+                return change;
             }
-        });
+            return null;
+        };
+        cvv.setTextFormatter(new TextFormatter<>(cvvFilter));
+
 
         // Allow only letters for Cardholder's name
         UnaryOperator<TextFormatter.Change> nameFilter = change -> {
@@ -147,4 +138,17 @@ public class PaymentController {
         nextBtn.setOnAction(event -> nextBtnOnAction(event));
         backBtn.setOnAction(event -> backBtnOnAction(event));
     }
+
+    public void navigateTo(ActionEvent event, String nextPageFXML) {
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
+    }
+
 }

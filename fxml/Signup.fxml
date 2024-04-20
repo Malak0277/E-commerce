@@ -67,7 +67,7 @@
             <Font name="Goudy Old Style Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="GobackButton" layoutX="815.0" layoutY="534.0" mnemonicParsing="false" onAction="#GobackButtonOnAction" style="-fx-background-color: transparent;" styleClass="Cancel" text="Cancel" textFill="#cf967a">
+      <Button fx:id="GobackButton" layoutX="815.0" layoutY="534.0" mnemonicParsing="false" onAction="#GobackButtonOnAction" style="-fx-background-color: transparent;" styleClass="Cancel" text="Back" textFill="#cf967a">
          <font>
             <Font name="Goudy Old Style" size="18.0" />
          </font>

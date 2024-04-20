@@ -10,6 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class OmangementController {
+
+	@FXML
+    private Button backBtn;
+
 	@FXML
 	private ImageView i1;
 	@FXML
@@ -54,15 +58,21 @@ public class OmangementController {
 	            i6.setDisable(true);
 	            break;
 	        case "Cancelled":
+				i1.setVisible(false);
+				i2.setVisible(false);
+				i3.setVisible(false);
+				i4.setVisible(false);
+				i5.setVisible(false);
 	            i5.setVisible(true);
 	            i6.setDisable(true);
 	            break;
 	        default:
-	            // Handle other cases or provide a default behavior
 	            break;
 	    }
+
+		
 	}
 
-	        }
+}
 
 

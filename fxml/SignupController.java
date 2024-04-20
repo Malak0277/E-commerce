@@ -50,15 +50,7 @@ public class SignupController {
 
     @FXML
     void GobackButtonOnAction(ActionEvent event) {
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader (getClass().getResource("login.fxml"));
-            root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();}
-        catch (IOException e) {}
+        navigateTo(event, "login.fxml");
     }
 
     @FXML
@@ -88,14 +80,26 @@ public class SignupController {
         }
 
         user.CreateAccount(firstName, lastName, username, password);
-
-        // todo: go to homepage
+        navigateTo(event, "Catalog.fxml");
     }
+    
 
     @FXML
     public void initialize() {
         signupFrameButton.setOnAction(event -> signupFrameButtonOnAction(event));
         GobackButton.setOnAction(event -> GobackButtonOnAction(event));
+    }
+
+    public void navigateTo(ActionEvent event, String nextPageFXML) {
+        Parent root;
+            try {
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
+                    root = loader.load();
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();} 
+            catch (IOException e) {}
     }
 
 }
