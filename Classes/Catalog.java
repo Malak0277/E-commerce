@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Catalog {
     private String name;
-    private List<Item> items;
+    private static ArrayList<Item> items;
 
     public Catalog() {
         this.items = new ArrayList<>();
@@ -24,7 +23,7 @@ public class Catalog {
         return null;
     }
 
-    public List<Item> getAllItems() {
+    public static ArrayList<Item> getAllItems() {
         return items;
     }
 
@@ -35,8 +34,8 @@ public class Catalog {
         return false;
     }
 
-    public List<Item> searchIn(String keyword) {
-        List<Item> searchResults = new ArrayList<>();
+    public ArrayList<Item> searchIn(String keyword) {
+        ArrayList<Item> searchResults = new ArrayList<>();
         for (Item item : items)
             if (item.getName().toLowerCase().contains(keyword.toLowerCase()))
                 searchResults.add(item);

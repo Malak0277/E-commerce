@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
@@ -14,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Insets;
@@ -74,26 +76,13 @@ public class CatalogController implements Initializable {
     @FXML
     private Tab tab7;
 
-    Image image;
-    ObservableList<Item> itemsList;
-
-
-    //private ObservableList<Catalog> itemsList = FXCollections.observableArrayList();
+    private ObservableList<Item> itemsList = FXCollections.observableArrayList();
 
     public ObservableList<Item> getItemsList() {
-        /*
-        while (not empty) {
-            it = new Item(
-                result.getString("prod_name"),
-                result.getString("type"),
-                result.getInt("stock"),
-                result.getDouble("price"),
-                result.getString("image"));
-            itemsList.add(it);
-        }
-        */
-        return itemsList;
+        ObservableList<Item> currItemsList = FXCollections.observableArrayList(Catalog.getAllItems());
+        return currItemsList;
     }
+
 
     public void classicDisplay() {
         itemsList.clear();

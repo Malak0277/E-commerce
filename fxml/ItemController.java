@@ -37,21 +37,12 @@ public class ItemController implements Initializable {
     private int itemAmount;
     private double totalPrice;
 
-    /*
-    public void setData(Item item) {
-        this.item = item;
-
-        img = item.getImage();
-        type = item.getGenre();
-        ptc = item.getPrice();
-    }
-    */
 
     public void setData(Item item) {
         itemName.setText(item.getName());
         itemPrice.setText("$" + String.valueOf(item.getPrice()));
-        String path = "File:" + item.getImage();
-        image = new Image(item.getImage(), 200, 195, false, true)
+        //String path = "File:" + item.getImage();
+        image = new Image(item.getImage(), 200, 195, false, true);
         itemImg.setImage(image);
     }
 
@@ -61,8 +52,6 @@ public class ItemController implements Initializable {
     }
 
     public void add() {
-        CatalogController c = new CatalogController();
-
         itemAmount = amount.getValue();
 
         if (item.getStock() == 0) {
