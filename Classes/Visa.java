@@ -32,12 +32,12 @@ public class Visa {
 	public boolean CVV_check(int cvv){
 		if(this.cvv == cvv)
 			return true;
-		
+
 		return false;
 	}
 
 	public String getVisaNumber(){
 		return Visa_no;
 	}
-	
+
 }

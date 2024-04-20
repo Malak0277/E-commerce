@@ -71,20 +71,21 @@ public class OrderRequestController {
             return;
         }
 
-        /* todo:
+         /* todo:
          on clicking "order now" in cart:
          Order o = new Order(, , ,);
          Order.currrentOrder = o;
-         */
-        Order.currrentOrder.orderRequest(ad, phoneNumber);
+         Order.currrentOrder.orderRequest(ad, phoneNumber);
+        */
 
         if (selectedOption.equals("Cash")) {
-            navigateToOmangement(event, "Order_Placed");
-
-        } else {
+            //Order.SelectedOrder = new Order();
+            navigateTo(event, "Omangment.fxml");
+        }
+        else {
             if(selectedRadio.equals("Existing Visa")){
                 User currentUser = User.getCurrentUser();
-                if (currentUser.get_visas().size() == 0){
+                if (currentUser.get_visas().isEmpty()){
                     MessageLabel.setText("You have no existing visas");
                     return;
                 }
@@ -98,49 +99,29 @@ public class OrderRequestController {
     }
 
     @FXML
-    void backBtnOnAction(ActionEvent event) {
+    void backBtnOnAction(ActionEvent event)  {
         navigateTo(event, "Catalog.fxml");
     }
 
-    
-    
-
-
     public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
-    }
-
-    public void navigateToOmangement(ActionEvent event, String status){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
-            Parent root = loader.load();
-
-            // Pass the status to the initialize method of OmangementController
-            OmangementController omangementController = loader.getController();
-            omangementController.initialize(status);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            stage.show();}
+        catch (IOException e) {}
     }
+
+    
     @FXML
     public void initialize() { 
 
         methodChoiceBox.getItems().addAll("Visa", "Cash");
         methodChoiceBox.getSelectionModel().selectFirst();
-        
+    
         // Add event listener to the ChoiceBox
         methodChoiceBox.setOnAction(event -> {
             String selectedOption = methodChoiceBox.getValue();
@@ -152,6 +133,7 @@ public class OrderRequestController {
                 newRadioBox.setVisible(true);
             }
         });
+
         nextBtn.setOnAction(event -> {
             String selectedOption = methodChoiceBox.getValue();
             String selectedRadio = ((RadioButton) visaSelection.getSelectedToggle()).getText();
@@ -160,4 +142,5 @@ public class OrderRequestController {
 
         backBtn.setOnAction(event -> backBtnOnAction(event));
     }
+
 }

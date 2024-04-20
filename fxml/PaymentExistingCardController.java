@@ -1,11 +1,16 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.function.UnaryOperator;
 
 public class PaymentExistingCardController {
 
@@ -34,7 +39,7 @@ public class PaymentExistingCardController {
     void nextBtnOnAction(ActionEvent event) {
         String cv = cvv.getText();
         Visa selectedVisa = cards.getSelectionModel().getSelectedItem();
-    
+
         if (selectedVisa == null) {
             MessageLabel.setText("Please choose a visa");
             return;
@@ -51,13 +56,9 @@ public class PaymentExistingCardController {
             MessageLabel.setText("Wrong cvv");
             return;
         }
+        User.getCurrentUser().addOrder(Order.currrentOrder);
 
-
-        User.getCurrentUser.addOrder(Order.currrentOrder);
-
-        navigateToOmangement(event, "Order_Placed");
-
-
+        navigateTo(event, "Omangment.fxml");
     }
 
     @FXML
@@ -84,14 +85,14 @@ public class PaymentExistingCardController {
                     // Get the last four characters of the Visa number
                     String visaNumber = item.getVisaNumber();
                     String displayedText = visaNumber.substring(Math.max(visaNumber.length() - 4, 0))
-                                           + "******";
+                            + "******";
                     label.setText(displayedText);
                     setGraphic(label);
                 }
             }
         });
         cards.getItems().addAll(currentUser.get_visas());
-        
+
 
         // Limit CVV input to maximum 3 characters using a TextFormatter
         UnaryOperator<TextFormatter.Change> cvvFilter = change -> {
@@ -109,32 +110,14 @@ public class PaymentExistingCardController {
 
     public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
-    }
-
-    public void navigateToOmangement(ActionEvent event, String status){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
-            Parent root = loader.load();
-
-            // Pass the status to the initialize method of OmangementController
-            OmangementController omangementController = loader.getController();
-            omangementController.initialize(status);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            stage.show();}
+        catch (IOException e) {}
     }
 
 }

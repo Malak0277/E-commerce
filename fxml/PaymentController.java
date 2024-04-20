@@ -80,7 +80,7 @@ public class PaymentController {
 
         User.getCurrentUser().addOrder(Order.currrentOrder);
 
-        navigateToOmangement(event, "Order_Placed");
+        navigateTo(event, "Omangment.fxml");
 
     }
 
@@ -140,32 +140,14 @@ public class PaymentController {
 
     public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
-    }
-
-    public void navigateToOmangement(ActionEvent event, String status){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
-            Parent root = loader.load();
-
-            // Pass the status to the initialize method of OmangementController
-            OmangementController omangementController = loader.getController();
-            omangementController.initialize(status);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            stage.show();}
+        catch (IOException e) {}
     }
 
 }
