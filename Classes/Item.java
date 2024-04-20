@@ -32,6 +32,9 @@ public class Item {
         stock += newStock;
     }
 
+    public void unordered() {
+        stock -= 1;
+    }
 
     public String getName() {
         return name;
