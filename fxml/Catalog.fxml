@@ -22,7 +22,7 @@
    <children>
       <TabPane layoutX="67.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="532.0" rotateGraphic="true" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab fx:id="classic" text="Classic">
+            <Tab fx:id="tab1" text="Classic">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);">
                      <children>
@@ -30,7 +30,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="372.0" prefWidth="532.0">
                                  <children>
-                                    <GridPane fx:id="menu" layoutX="-2.0" layoutY="-3.0" prefHeight="62.0" prefWidth="124.0">
+                                    <GridPane fx:id="classic" layoutX="-2.0" layoutY="-3.0" prefHeight="62.0" prefWidth="124.0">
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
@@ -43,7 +43,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="romance" text="Romance">
+            <Tab fx:id="tab2" text="Romance">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -51,7 +51,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="530.0">
                                  <children>
-                                    <GridPane fx:id="menu2" layoutY="6.0">
+                                    <GridPane fx:id="romance" layoutY="6.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -67,7 +67,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="fiction" text="Fiction">
+            <Tab fx:id="tab3" text="Fiction">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -75,7 +75,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="532.0">
                                  <children>
-                                    <GridPane fx:id="menu3">
+                                    <GridPane fx:id="fiction">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -91,7 +91,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="adventure" text="Adventure">
+            <Tab fx:id="tab4" text="Adventure">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -99,7 +99,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="533.0">
                                  <children>
-                                    <GridPane fx:id="menu4" layoutY="7.0">
+                                    <GridPane fx:id="adventure" layoutY="7.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -115,7 +115,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="mystery" text="Mystery">
+            <Tab fx:id="tab5" text="Mystery">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -123,7 +123,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="531.0">
                                  <children>
-                                    <GridPane fx:id="menu5" layoutY="6.0">
+                                    <GridPane fx:id="mystery" layoutY="6.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -139,7 +139,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="history" text="History">
+            <Tab fx:id="tab6" text="History">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -147,7 +147,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="372.0" prefWidth="534.0">
                                  <children>
-                                    <GridPane fx:id="menu6">
+                                    <GridPane fx:id="history">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -163,7 +163,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="science" text="Science">
+            <Tab fx:id="tab7" text="Science">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -173,7 +173,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="532.0">
                                        <children>
-                                          <GridPane fx:id="menu7">
+                                          <GridPane fx:id="science">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
@@ -195,6 +195,62 @@
       </TabPane>
       <VBox fx:id="sideNav" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="67.0" spacing="30.0" style="-fx-background-color: #ffffffff;">
          <children>
+            <Region fx:id="navHome" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Region>
+            <Region fx:id="navCart" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M94.5,434.6h24.8l4.7-15.7H92.2l-1.3-8.9H84v4.8h3.1l3.7,27.8h0.1c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h12.8c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h1.7v-3.9l-25.8-0.1L94.5,434.6&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9); -fx-scale-x: -1;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Region>
+            <Label fx:id="logout1" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Orders" textAlignment="CENTER">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.1926829268292683">
+                           <color>
+                              <Color red="0.929411768913269" green="0.7098039388656616" blue="0.5647059082984924" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.41144995568394443">
+                           <color>
+                              <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.6184387617765815">
+                           <color>
+                              <Color red="0.9254902005195618" green="0.7333333492279053" blue="0.615686297416687" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.8085940321045201">
+                           <color>
+                              <Color red="0.9254902005195618" green="0.7490196228027344" blue="0.6392157077789307" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9215686321258545" green="0.7607843279838562" blue="0.6627451181411743" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
             <Label fx:id="logout" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Log out" textAlignment="CENTER">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -241,16 +297,6 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Region fx:id="navHome" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Region>
-            <Region fx:id="navCart" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M94.5,434.6h24.8l4.7-15.7H92.2l-1.3-8.9H84v4.8h3.1l3.7,27.8h0.1c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h12.8c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h1.7v-3.9l-25.8-0.1L94.5,434.6&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9); -fx-scale-x: -1;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Region>
          </children>
          <padding>
             <Insets top="20.0" />
