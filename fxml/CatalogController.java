@@ -21,43 +21,22 @@ import javafx.geometry.Insets;
 public class CatalogController implements Initializable {
 
     @FXML
-    private Tab adventure;
+    private GridPane adventure;
 
     @FXML
-    private Tab classic;
+    private GridPane classic;
 
     @FXML
-    private Tab fiction;
+    private GridPane fiction;
 
     @FXML
-    private Tab history;
+    private GridPane history;
 
     @FXML
     private Label logout;
 
     @FXML
-    private GridPane menu;
-
-    @FXML
-    private GridPane menu2;
-
-    @FXML
-    private GridPane menu3;
-
-    @FXML
-    private GridPane menu4;
-
-    @FXML
-    private GridPane menu5;
-
-    @FXML
-    private GridPane menu6;
-
-    @FXML
-    private GridPane menu7;
-
-    @FXML
-    private Tab mystery;
+    private GridPane mystery;
 
     @FXML
     private Region navCart;
@@ -66,13 +45,34 @@ public class CatalogController implements Initializable {
     private Region navHome;
 
     @FXML
-    private Tab romance;
+    private GridPane romance;
 
     @FXML
-    private Tab science;
+    private GridPane science;
 
     @FXML
     private VBox sideNav;
+
+    @FXML
+    private Tab tab1;
+
+    @FXML
+    private Tab tab2;
+
+    @FXML
+    private Tab tab3;
+
+    @FXML
+    private Tab tab4;
+
+    @FXML
+    private Tab tab5;
+
+    @FXML
+    private Tab tab6;
+
+    @FXML
+    private Tab tab7;
 
     Image image;
     ObservableList<Item> itemsList;
@@ -95,14 +95,14 @@ public class CatalogController implements Initializable {
         return itemsList;
     }
 
-    public void menuDisplay() {
+    public void classicDisplay() {
         itemsList.clear();
         itemsList.addAll(getItemsList());
         int row = 0, column = 0;
 
-        menu.getChildren().clear();
-        menu.getRowConstraints().clear();
-        menu.getColumnConstraints().clear();
+        classic.getChildren().clear();
+        classic.getRowConstraints().clear();
+        classic.getColumnConstraints().clear();
 
         for (int q = 0; q < itemsList.size(); q++) {
             try {
@@ -117,7 +117,7 @@ public class CatalogController implements Initializable {
                     row += 1;
                 }
 
-                menu.add(pane, column++, row);
+                classic.add(pane, column++, row);
 
                 GridPane.setMargin(pane, new Insets(10));
 
@@ -125,13 +125,218 @@ public class CatalogController implements Initializable {
                 e.printStackTrace();
             }
         }
+
     }
+
+    public void romanceDisplay() {
+        itemsList.clear();
+        itemsList.addAll(getItemsList());
+        int row = 0, column = 0;
+
+        romance.getChildren().clear();
+        romance.getRowConstraints().clear();
+        romance.getColumnConstraints().clear();
+
+        for (int q = 0; q < itemsList.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = load.load();
+                ItemController itemCard = load.getController();
+                itemCard.setData(itemsList.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+
+                romance.add(pane, column++, row);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void fictionDisplay() {
+        itemsList.clear();
+        itemsList.addAll(getItemsList());
+        int row = 0, column = 0;
+
+        fiction.getChildren().clear();
+        fiction.getRowConstraints().clear();
+        fiction.getColumnConstraints().clear();
+
+        for (int q = 0; q < itemsList.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = load.load();
+                ItemController itemCard = load.getController();
+                itemCard.setData(itemsList.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+
+                fiction.add(pane, column++, row);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void adventureDisplay() {
+        itemsList.clear();
+        itemsList.addAll(getItemsList());
+        int row = 0, column = 0;
+
+        adventure.getChildren().clear();
+        adventure.getRowConstraints().clear();
+        adventure.getColumnConstraints().clear();
+
+        for (int q = 0; q < itemsList.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = load.load();
+                ItemController itemCard = load.getController();
+                itemCard.setData(itemsList.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+
+                adventure.add(pane, column++, row);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void mysteryDisplay() {
+        itemsList.clear();
+        itemsList.addAll(getItemsList());
+        int row = 0, column = 0;
+
+        mystery.getChildren().clear();
+        mystery.getRowConstraints().clear();
+        mystery.getColumnConstraints().clear();
+
+        for (int q = 0; q < itemsList.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = load.load();
+                ItemController itemCard = load.getController();
+                itemCard.setData(itemsList.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+
+                mystery.add(pane, column++, row);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void historyDisplay() {
+        itemsList.clear();
+        itemsList.addAll(getItemsList());
+        int row = 0, column = 0;
+
+        history.getChildren().clear();
+        history.getRowConstraints().clear();
+        history.getColumnConstraints().clear();
+
+        for (int q = 0; q < itemsList.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = load.load();
+                ItemController itemCard = load.getController();
+                itemCard.setData(itemsList.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+
+                history.add(pane, column++, row);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void scienceDisplay() {
+        itemsList.clear();
+        itemsList.addAll(getItemsList());
+        int row = 0, column = 0;
+
+        science.getChildren().clear();
+        science.getRowConstraints().clear();
+        science.getColumnConstraints().clear();
+
+        for (int q = 0; q < itemsList.size(); q++) {
+            try {
+                FXMLLoader load = new FXMLLoader();
+                load.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = load.load();
+                ItemController itemCard = load.getController();
+                itemCard.setData(itemsList.get(q));
+
+                if (column == 3) {
+                    column = 0;
+                    row += 1;
+                }
+
+                science.add(pane, column++, row);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-        menuDisplay();
+        classicDisplay();
+        romanceDisplay();
+        fictionDisplay();
+        adventureDisplay();
+        mysteryDisplay();
+        historyDisplay();
+        scienceDisplay();
 
     }
 }

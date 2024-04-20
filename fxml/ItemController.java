@@ -25,8 +25,8 @@ public class ItemController implements Initializable {
     @FXML
     private Label itemPrice;
 
-    private Item item;
 
+    private Item item;
     private Image image;
 
     private SpinnerValueFactory<Integer> spin;
@@ -34,13 +34,24 @@ public class ItemController implements Initializable {
     private Alert alert;
 
     private Cart cart;
+    private int itemAmount;
     private double totalPrice;
 
+    /*
+    public void setData(Item item) {
+        this.item = item;
+
+        img = item.getImage();
+        type = item.getGenre();
+        ptc = item.getPrice();
+    }
+    */
 
     public void setData(Item item) {
         itemName.setText(item.getName());
         itemPrice.setText("$" + String.valueOf(item.getPrice()));
-        //image = new Image(item.getImage(), 200, 195, false, true)
+        String path = "File:" + item.getImage();
+        image = new Image(item.getImage(), 200, 195, false, true)
         itemImg.setImage(image);
     }
 
@@ -49,18 +60,17 @@ public class ItemController implements Initializable {
         amount.setValueFactory(spin);
     }
 
-    private int itemAmount;
     public void add() {
-
         CatalogController c = new CatalogController();
 
         itemAmount = amount.getValue();
 
         if (item.getStock() == 0) {
             alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Out of stock!");
+            alert.setTitle("Error Message");
             alert.setHeaderText(null);
-            alert.setContentText("Sorry, this item is out of stock");
+            alert.setContentText("Out of stock!");
+            alert.showAndWait();
         } else {
             cart.addToCart(item, itemAmount);
             totalPrice = itemAmount * item.getPrice();
