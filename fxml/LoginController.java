@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LoginController {
 
@@ -51,14 +52,13 @@ public class LoginController {
         // Check if any of the text fields are empty
         if (username.isEmpty() || password.isEmpty()) {
             LoginMessageLabel.setText("Please fill in all fields");
-            return; 
+            return;
         }
-        
+
         User user = new User();
         if(user.login(username, password)){
             navigateTo(event, "Catalog.fxml");
-        }
-        else {
+        } else {
             LoginMessageLabel.setText("Wrong username or password");
         }
     }
@@ -76,15 +76,14 @@ public class LoginController {
 
     public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
+        try {
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException e) {}
     }
-
-
 }

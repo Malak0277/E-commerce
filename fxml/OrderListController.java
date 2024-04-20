@@ -1,11 +1,17 @@
+import java.io.IOException;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class OrderListController {
 
@@ -29,20 +35,17 @@ public class OrderListController {
 
 
     @FXML
-    void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
+    void nextBtnOnAction(ActionEvent event) {
         String selectedOrderInfo = cards.getSelectionModel().getSelectedItem();
-            if (selectedOrderInfo != null) {
-                String orderId = extractOrderId(selectedOrderInfo);
-
-                Order selectedOrder = User.getCurrentUser().getOrder(orderId);
-                if (selectedOrder != null) {
-                    navigateToOmangement(event, selectedOrder.getStatus());
-                }
-                else{
-                    MessageLabel.setText("Please select an order");
-                    return;
-                }
-            }
+        if (selectedOrderInfo != null) {
+            String orderId = extractOrderId(selectedOrderInfo);
+            Order.SelectedOrder = User.getCurrentUser().getOrder(orderId);
+            navigateTo(event, "Omangment.fxml");
+        }
+        else{
+            MessageLabel.setText("Please select an order");
+            return;
+        }
     }
 
     @FXML
@@ -70,7 +73,7 @@ public class OrderListController {
     public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
             try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
+                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
                     root = loader.load();
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
@@ -78,27 +81,13 @@ public class OrderListController {
                     stage.show();} 
             catch (IOException e) {}
     }
-
-    public void navigateToOmangement(ActionEvent event, String status){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Omangement.fxml"));
-            Parent root = loader.load();
-
-            // Pass the status to the initialize method of OmangementController
-            OmangementController omangementController = loader.getController();
-            omangementController.initialize(status);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
+    //static boolean s = true;
     @FXML
      public void initialize() {
+        /*if(s) {
+            User.getCurrentUser().orderGenerator();
+            s = false;
+        }*/
         populateOrdersList();
         nextBtn.setOnAction(event -> nextBtnOnAction(event));
         backBtn.setOnAction(event -> backBtnOnAction(event));

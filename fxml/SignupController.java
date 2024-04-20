@@ -80,9 +80,9 @@ public class SignupController {
         }
 
         user.CreateAccount(firstName, lastName, username, password);
+
         navigateTo(event, "Catalog.fxml");
     }
-    
 
     @FXML
     public void initialize() {
@@ -92,14 +92,14 @@ public class SignupController {
 
     public void navigateTo(ActionEvent event, String nextPageFXML) {
         Parent root;
-            try {
-                    FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML)); 
-                    root = loader.load();
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();} 
-            catch (IOException e) {}
+        try {
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();}
+        catch (IOException e) {}
     }
 
 }

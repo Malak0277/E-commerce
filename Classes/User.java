@@ -30,7 +30,6 @@ public class User {
 	public void CreateAccount(String FN, String LN, String UserName, String Password)
 	{
 		User e = new User(FN, LN, UserName, Password);
-
 		Accounts.add(e);
 	}
 
@@ -80,7 +79,7 @@ public class User {
 		if(userIndex >= 0 && userIndex < Accounts.size()) {
 			return Accounts.get(userIndex);
 		} else {
-			return null; 
+			return null;
 		}
 	}
 
@@ -90,6 +89,9 @@ public class User {
 
 	public void addVisa(Visa Visa){
 		Visas.add(Visa);
+		for (Visa Visa1 : Visas) {
+			System.out.println(Visa1.getVisaNumber());
+		}
 	}
 
 	public void addCart(Cart cart){
@@ -106,12 +108,27 @@ public class User {
 
 	public Order getOrder(String OrderID){
 		for (Order order : Orders) {
-            if (order.getOrderID().equals(OrderID)){
+			if (order.getOrderID().equals(OrderID)){
 				return order;
 			}
-        }
+		}
 		return null;
 	}
+
+	/*public void orderGenerator()
+	{
+		Item i = new Item("Ain Shams", "Horror", 10, 250);
+		Cart c = new Cart();
+		c.addToCart(i, 3);
+		c.setTotalPrice();
+		double totalPrice = c.getTotalPrice();
+		Order o1 = new Order(c, totalPrice);
+		o1.orderRequest("ABC", "01054789346");
+		Order o2 = new Order(c, totalPrice);
+		o2.orderRequest("DFG", "01054789348");
+		Orders.add(o1);
+		Orders.add(o2);
+	}*/
 
 	public String getUserName(){
 		return UserName;
