@@ -1,3 +1,5 @@
+package com.example.testingproject;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,6 +90,7 @@ public class CartController implements Initializable {
     private void increaseOnAction(ActionEvent event) {
         User.getCurrentUser().getCart().increaseAmount(null);
     }
+
     @FXML
     private void decreaseOnAction(ActionEvent event) {
         User.getCurrentUser().getCart().decreaseAmount(null);
@@ -136,9 +139,10 @@ public class CartController implements Initializable {
                     c.removeFromCart(currItem.getKey());
                     continue;
                 }
+
                 HBox hb = new HBox();
                 hb.setPrefHeight(100); // Set preferred height for HBox
-                
+
                 Label bookName = new Label(currItem.getKey().getName());
                 bookName.setPrefHeight(60);
                 bookName.setPrefWidth(160);
@@ -151,18 +155,11 @@ public class CartController implements Initializable {
                 price.setPrefWidth(81);
                 price.setStyle("-fx-font-size: 14px;");
                 HBox.setMargin(price, new Insets(20, 0, 0, 0)); // Set margins
-                
+
                 Button decrease = new Button("-");
                 decrease.setPrefHeight(26);
                 decrease.setPrefWidth(28);
                 HBox.setMargin(decrease, new Insets(38, 0, 0, 0)); // Set margins
-                
-                
-                Integer amountValue;
-                if(currItem.getValue() > currItem.getKey().getStock())
-                    amountValue = currItem.getKey().getStock();
-                else
-                    amountValue = currItem.getValue();
 
 
                 Integer amountValue;
