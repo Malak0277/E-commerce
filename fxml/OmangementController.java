@@ -21,7 +21,6 @@ public class OmangementController {
 
 	@FXML
 	private Button backBtn;
-
 	@FXML
 	private ImageView i1;
 	@FXML

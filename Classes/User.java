@@ -8,7 +8,7 @@ public class User {
 	private ArrayList<Visa> Visas;
 	private Cart myCart;
 	private ArrayList<Order> Orders;
-
+	
 	static public int userIndex = -1;
 
 	public static ArrayList<User> Accounts = new ArrayList<>();
@@ -114,6 +114,10 @@ public class User {
 		}
 		return null;
 	}
+
+    public Cart getCart() {
+		return myCart;
+    }
 
 	/*public void orderGenerator()
 	{

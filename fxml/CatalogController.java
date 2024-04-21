@@ -43,9 +43,6 @@ public class CatalogController implements Initializable {
     private Region navCart;
 
     @FXML
-    private Region navHome;
-
-    @FXML
     private GridPane romance;
 
     @FXML
@@ -180,16 +177,22 @@ public class CatalogController implements Initializable {
     }
 
     @FXML
-    private void handleNavCartClicked(MouseEvent event) {
-        navigateToMouse(event, "Cart.fxml");
+    private void handleNavCartClick(MouseEvent event) {
+        navigateTo(event, "Cart.fxml");
     }
 
     @FXML
-    private void handleNavHomeClicked(MouseEvent event) {
-        navigateToMouse(event, "Catalog.fxml");
+    private void handleLogoutClick(MouseEvent event) {
+        navigateTo(event, "login.fxml");
     }
 
-    public void navigateToMouse(MouseEvent event, String nextPageFXML) {
+    @FXML
+    private void handleOrdersClick(MouseEvent event) {
+        navigateTo(event, "OrdersList.fxml");
+    }
+
+    public void navigateTo(MouseEvent event, String nextPageFXML) {
+
         Parent root;
         try {
             FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
@@ -215,4 +218,5 @@ public class CatalogController implements Initializable {
         display("history");
         display("science");
     }
+
 }

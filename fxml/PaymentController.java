@@ -75,12 +75,27 @@ public class PaymentController {
             return;
         }
 
+        for (Visa visa : User.getCurrentUser().get_visas) {
+            if(num.equals(visa.Visa_no)){
+                MessageLabel.setText("Visa already exists!");
+                return;
+            }
+        }
+
         visa = new Visa(num, cvv);
         User.getCurrentUser().addVisa(visa);
 
-        User.getCurrentUser().addOrder(Order.currrentOrder);
 
-        navigateTo(event, "Omangment.fxml");
+        Order order = new Order(User.getCurrentUser().getCart(), Order.currentOrder.getAddress(), Order.currentOrder.getPhoneNumber());
+        User.getCurrentUser().addOrder(order);
+
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Order added successully!");
+        alert.showAndWait();
+        
+        navigateTo(event, "Catalog.fxml");
 
     }
 
@@ -124,7 +139,6 @@ public class PaymentController {
         };
         name.setTextFormatter(new TextFormatter<>(nameFilter));
 
-        // Allow only numbers and limit Card Number to maximum 16 characters
         number.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 number.setText(newValue.replaceAll("[^\\d]", ""));

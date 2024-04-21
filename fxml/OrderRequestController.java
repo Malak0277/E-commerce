@@ -45,21 +45,13 @@ public class OrderRequestController {
     @FXML
     private Label MessageLabel;
 
+    private Alert alert;
+
     @FXML
     void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
         String ad = address.getText();
         String phoneNumber = phoneNo.getText();
         
-        // Allow only numbers and limit Card Number to maximum 16 characters
-        phoneNo.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                phoneNo.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-            if (newValue.length() > 11) {
-                phoneNo.setText(oldValue); // Restore the previous value if it exceeds 11 characters
-            }
-        });
-
         // Check if any of the text fields are empty
         if (ad.isEmpty() || phoneNumber.isEmpty()) {
             MessageLabel.setText("Please fill in all fields");
@@ -71,18 +63,23 @@ public class OrderRequestController {
             return;
         }
 
-         /* todo:
-         on clicking "order now" in cart:
-         Order o = new Order(, , ,);
-         Order.currrentOrder = o;
-         Order.currrentOrder.orderRequest(ad, phoneNumber);
-        */
-
+        Order o = new Order(ad, phoneNumber);
+        
         if (selectedOption.equals("Cash")) {
-            //Order.SelectedOrder = new Order();
-            navigateTo(event, "Omangment.fxml");
+            Order order = new Order(User.getCurrentUser().getCart(), o.getAddress(), o.getPhoneNumber());
+            Order.SelectedOrder = order;
+            User.getCurrentUser().addOrder(Order.SelectedOrder);
+
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Order added successully!");
+            alert.showAndWait();
+
+            navigateTo(event, "Catalog.fxml");
         }
         else {
+            Order.currrentOrder = o;
             if(selectedRadio.equals("Existing Visa")){
                 User currentUser = User.getCurrentUser();
                 if (currentUser.get_visas().isEmpty()){
@@ -131,6 +128,15 @@ public class OrderRequestController {
             } else {
                 existingRadioBox.setVisible(true);
                 newRadioBox.setVisible(true);
+            }
+        });
+
+        phoneNo.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                phoneNo.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+            if (newValue.length() > 11) {
+                phoneNo.setText(oldValue); // Restore the previous value if it exceeds 11 characters
             }
         });
 
