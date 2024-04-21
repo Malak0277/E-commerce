@@ -41,11 +41,12 @@ public class ItemController implements Initializable {
         itemName.setText(item.getName());
         itemPrice.setText("$" + String.valueOf(item.getPrice()));
         //String path = "File:" + item.getImage();
-        Image image = new Image(getClass().getResourceAsStream(item.getImage()), 200, 195, false, true);
-        itemImg.setImage(image);
+        //Image image = new Image(item.getImage(),200, 195, false, true);
+        //itemImg.setImage(image);
+        setQuantity(item);
     }
 
-    public void setQuantity() {
+    public void setQuantity(Item item) {
         spin = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, item.getStock(), 0);
         amount.setValueFactory(spin);
     }
@@ -72,6 +73,5 @@ public class ItemController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setQuantity();
     }
 }

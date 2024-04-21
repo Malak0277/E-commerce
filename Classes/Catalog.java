@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Catalog {
-    private static ArrayList<Item> items;
+    private ArrayList<Item> items;
 
     public Catalog() {
         this.items = new ArrayList<>();
@@ -22,7 +22,7 @@ public class Catalog {
         return null;
     }
 
-    public static ArrayList<Item> getAllItems() {
+    public ArrayList<Item> getAllItems() {
         return items;
     }
 
