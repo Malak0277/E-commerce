@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Catalog {
-    private ArrayList<Item> items;
+    private static ArrayList<Item> items;
 
     public Catalog() {
         this.items = new ArrayList<>();
@@ -15,7 +15,7 @@ public class Catalog {
         items.remove(item);
     }
 
-    public Item getItem(String bookName) {
+    public static Item getItem(String bookName) {
         for (Item item : items)
             if (item.getName() == bookName)
                 return item;

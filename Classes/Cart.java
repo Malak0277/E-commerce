@@ -12,41 +12,31 @@ public class Cart {
     }
 
     public void addToCart(Item item, int amount) {
-        if (amount <= 0)
-            throw new IllegalArgumentException("Amount must be positive.");
         int currentAmount = itemsAmounts.getOrDefault(item, 0);
         itemsAmounts.put(item, currentAmount + amount);
-        item.ordered(amount);
+        //item.ordered(amount);
         setTotalPrice();
     }
 
     public void removeFromCart(Item item) {
-        if (!itemsAmounts.containsKey(item))
-            throw new IllegalArgumentException("Item not found in cart.");
         itemsAmounts.remove(item);
-        item.unordered();
+        //item.unordered(item.itemsAmounts);
         setTotalPrice();
     }
 
     public void increaseAmount(Item item) {
-        if (!itemsAmounts.containsKey(item))
-            throw new IllegalArgumentException("Item not found in cart.");
-
         int currentAmount = itemsAmounts.get(item);
         itemsAmounts.put(item, currentAmount + 1);
         setTotalPrice();
     }
 
     public void decreaseAmount(Item item) {
-        if (!itemsAmounts.containsKey(item))
-            throw new IllegalArgumentException("Item not found in cart.");
-
         int currentAmount = itemsAmounts.get(item);
         if (currentAmount == 1)
             removeFromCart(item);
         else {
             itemsAmounts.put(item, currentAmount - 1);
-            item.unordered();
+            //item.unordered(1);
         }
         setTotalPrice();
     }

@@ -15,12 +15,6 @@ public class Item {
     }
 
     public void ordered(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount must be non-negative.");
-        }
-        if (amount > stock) {
-            throw new IllegalArgumentException("Ordered amount exceeds available stock.");
-        }
         stock -= amount;
     }
 
@@ -31,8 +25,8 @@ public class Item {
         stock += newStock;
     }
 
-    public void unordered() {
-        stock -= 1;
+    public void unordered(int amount) { //CANCEL!
+        stock += amount;
     }
 
     public String getName() {

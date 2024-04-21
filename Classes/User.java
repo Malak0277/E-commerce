@@ -115,6 +115,10 @@ public class User {
 		return null;
 	}
 
+    public Cart getCart() {
+		return myCart;
+    }
+
 	/*public void orderGenerator()
 	{
 		Item i = new Item("Ain Shams", "Horror", 10, 250);

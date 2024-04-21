@@ -197,17 +197,12 @@
         </TabPane>
         <VBox fx:id="sideNav" alignment="TOP_CENTER" prefHeight="650.0" prefWidth="67.0" spacing="30.0" style="-fx-background-color: #ffffffff;">
             <children>
-                <Region fx:id="navHome" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);">
+                <Region fx:id="navCart" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" onMouseClicked="#handleNavCartClick" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M94.5,434.6h24.8l4.7-15.7H92.2l-1.3-8.9H84v4.8h3.1l3.7,27.8h0.1c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h12.8c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h1.7v-3.9l-25.8-0.1L94.5,434.6&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9); -fx-scale-x: -1;">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Region>
-                <Region fx:id="navCart" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" opacity="0.75" prefHeight="18.0" prefWidth="18.0" style="-fx-shape: &quot;M94.5,434.6h24.8l4.7-15.7H92.2l-1.3-8.9H84v4.8h3.1l3.7,27.8h0.1c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h12.8c0,1.9,1.8,3.4,3.9,3.4c2.2,0,3.9-1.5,3.9-3.4h1.7v-3.9l-25.8-0.1L94.5,434.6&quot;; -fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9); -fx-scale-x: -1;">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Region>
-                <Label fx:id="logout1" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Orders" textAlignment="CENTER">
+                <Label fx:id="orders" onMouseClicked="#handleOrdersClick" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Orders" textAlignment="CENTER">
                     <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                             <stops>
@@ -253,7 +248,7 @@
                         <Font name="Monotype Corsiva" size="20.0" />
                     </font>
                 </Label>
-                <Label fx:id="logout" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Log out" textAlignment="CENTER">
+                <Label fx:id="logout" onMouseClicked="#handleLogoutClick" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Log out" textAlignment="CENTER">
                     <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                             <stops>
