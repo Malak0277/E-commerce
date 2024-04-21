@@ -22,10 +22,10 @@ public class CartController implements Initializable {
     private VBox cart;
 
     @FXML
-    private HBox hb;
+    private Button decrease;
 
     @FXML
-    private Button decrease;
+    private HBox hb;
 
     @FXML
     private Button increase;
@@ -43,6 +43,9 @@ public class CartController implements Initializable {
     private Region navHome;
 
     @FXML
+    private Button orderNow;
+
+    @FXML
     private Label price;
 
     @FXML
@@ -51,9 +54,13 @@ public class CartController implements Initializable {
     @FXML
     private VBox sideNav;
 
+    @FXML
+    private Label totalPrice;
+
     ///////////////EDIT BASED ON WHERE IT BE CALLED
     Cart c;
     private Map<Item, Integer> cartItems = c.getItems();
+
 
 
     @Override
@@ -72,6 +79,7 @@ public class CartController implements Initializable {
                 hb.getChildren().add(amount);
                 cart.getChildren().add(hb);
             }
+            totalPrice.setText(String.valueOf(c.getTotalPrice()));
         }
     }
 

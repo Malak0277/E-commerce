@@ -13,20 +13,26 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CartController">
    <children>
-      <VBox fx:id="cart" layoutX="66.0" prefHeight="420.0" prefWidth="450.0">
+      <VBox fx:id="cart" layoutX="66.0" prefHeight="402.0" prefWidth="450.0">
          <children>
             <HBox fx:id="hb" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label fx:id="bookName" prefHeight="60.0" prefWidth="192.0" text="Book Name">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
-                     </HBox.margin></Label>
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                   <Label fx:id="price" prefHeight="60.0" prefWidth="81.0" text="Price">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </Label>
                   <Button fx:id="decrease" mnemonicParsing="false" prefHeight="26.0" prefWidth="28.0" text="-">
                      <HBox.margin>
@@ -164,5 +170,30 @@
             <Insets top="20.0" />
          </padding>
       </VBox>
+      <HBox layoutX="67.0" layoutY="402.0" prefHeight="46.0" prefWidth="450.0">
+         <children>
+            <Label prefHeight="50.0" prefWidth="146.0" text="Total Price">
+               <font>
+                  <Font name="Monospaced Bold Italic" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="totalPrice" prefHeight="51.0" prefWidth="124.0" text="15$">
+               <font>
+                  <Font name="Monospaced Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="orderNow" layoutX="353.0" layoutY="448.0" mnemonicParsing="false" text="Order Now">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
