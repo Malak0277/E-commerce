@@ -1,12 +1,19 @@
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Spinner;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ItemController implements Initializable {
@@ -33,7 +40,7 @@ public class ItemController implements Initializable {
 
     private Alert alert;
 
-    private Cart cart;
+    private Cart cart = User.getCurrentUser().getCart();
     private int itemAmount;
     private double totalPrice;
 
@@ -53,7 +60,9 @@ public class ItemController implements Initializable {
         amount.setValueFactory(spin);
     }
 
-    public void add() {
+    public void add(ActionEvent event) {
+        item = Catalog.getItem(itemName.textProperty().get());
+        //System.out.println(item.getName());
         itemAmount = amount.getValue();
 
         if (item.getStock() == 0) {
@@ -71,9 +80,15 @@ public class ItemController implements Initializable {
             alert.setContentText("Successfully Added!");
             alert.showAndWait();
         }
+
+        /*System.out.println("My Cart");
+        for (Item i : cart.getItems().keySet()) {
+            System.out.println(i.getName());
+        }*/
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addButton.setOnAction(event -> add(event));
     }
 }

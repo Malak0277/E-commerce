@@ -1,16 +1,23 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import javafx.geometry.Insets;
+import javafx.stage.Stage;
 
 public class CatalogController implements Initializable {
 
@@ -172,9 +179,33 @@ public class CatalogController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleNavCartClicked(MouseEvent event) {
+        navigateToMouse(event, "Cart.fxml");
+    }
+
+    @FXML
+    private void handleNavHomeClicked(MouseEvent event) {
+        navigateToMouse(event, "Catalog.fxml");
+    }
+
+    public void navigateToMouse(MouseEvent event, String nextPageFXML) {
+        Parent root;
+        try {
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
+            root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();}
+        catch (IOException e) {}
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        navCart.setOnMouseClicked(this::handleNavCartClicked);
+        navHome.setOnMouseClicked(this::handleNavHomeClicked);
+
         dataStored();
         display("classic");
         display("romance");

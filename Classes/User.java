@@ -133,4 +133,8 @@ public class User {
 	public String getUserName(){
 		return UserName;
 	}
+
+    public Cart getCart() {
+		return myCart;
+    }
 }
