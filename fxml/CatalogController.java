@@ -105,7 +105,6 @@ public class CatalogController implements Initializable {
         historyCatalog.addItem(new Item("The Art of War", "History", 12.99, 14, "art_of_war.jpg"));
 
         scienceCatalog.addItem(new Item("A Brief History of Time", "Science", 13.49, 22, "brief_history_of_time.jpg"));
-        scienceCatalog.addItem(new Item("Cosmos", "Science", 15.99, 18, "cosmos.jpg"));
         scienceCatalog.addItem(new Item("The Martian", "Science", 12.99, 20, "martian.jpg"));
     }
 
