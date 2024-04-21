@@ -75,8 +75,7 @@ public class CartController implements Initializable {
                 bookName.setText(currItem.getKey().getName());
                 price.setText(String.valueOf(currItem.getKey().getPrice()));
                 amount.setText(currItem.getValue().toString());
-                hb.getChildren().add(bookName);
-                hb.getChildren().add(amount);
+                hb.getChildren().addAll(bookName, price, decrease, amount, increase, remove);
                 cart.getChildren().add(hb);
             }
             totalPrice.setText(String.valueOf(c.getTotalPrice()));
