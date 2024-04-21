@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.*;
@@ -12,7 +13,43 @@ import java.util.ResourceBundle;
 
 public class CartController implements Initializable {
     @FXML
+    private Label amount;
+
+    @FXML
+    private Label bookName;
+
+    @FXML
     private VBox cart;
+
+    @FXML
+    private HBox hb;
+
+    @FXML
+    private Button decrease;
+
+    @FXML
+    private Button increase;
+
+    @FXML
+    private Label logout;
+
+    @FXML
+    private Label logout1;
+
+    @FXML
+    private Region navCart;
+
+    @FXML
+    private Region navHome;
+
+    @FXML
+    private Label price;
+
+    @FXML
+    private Label remove;
+
+    @FXML
+    private VBox sideNav;
 
     ///////////////EDIT BASED ON WHERE IT BE CALLED
     Cart c;
@@ -27,17 +64,15 @@ public class CartController implements Initializable {
             cart.getChildren().add(empty);
         } else {
             for (Map.Entry<Item, Integer> currItem: cartItems.entrySet()) {
-                HBox hb = new HBox();
-                Label bookName = new Label(currItem.getKey().getName());
-                Label bookAmount = new Label(currItem.getValue().toString());
+                hb = new HBox();
+                bookName.setText(currItem.getKey().getName());
+                price.setText(String.valueOf(currItem.getKey().getPrice()));
+                amount.setText(currItem.getValue().toString());
                 hb.getChildren().add(bookName);
-                hb.getChildren().add(bookAmount);
+                hb.getChildren().add(amount);
                 cart.getChildren().add(hb);
             }
-
         }
-
-
     }
 
 
