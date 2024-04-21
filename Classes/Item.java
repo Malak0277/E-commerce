@@ -1,4 +1,3 @@
-
 public class Item {
     private String name;
     private String genre;
@@ -53,6 +52,6 @@ public class Item {
     }
 
     public String getImage() {
-        return "..\\images\\Books\\" + image;
+        return "/images/Books/" + image;
     }
 }

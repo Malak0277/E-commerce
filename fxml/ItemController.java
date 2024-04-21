@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Spinner;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,8 +42,9 @@ public class ItemController implements Initializable {
         itemName.setText(item.getName());
         itemPrice.setText("$" + String.valueOf(item.getPrice()));
         //String path = "File:" + item.getImage();
-        //Image image = new Image(item.getImage(),200, 195, false, true);
-        //itemImg.setImage(image);
+        InputStream stream = getClass().getResourceAsStream(item.getImage());
+        Image image = new Image(stream,200, 195, false, true);
+        itemImg.setImage(image);
         setQuantity(item);
     }
 
