@@ -10,7 +10,6 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.geometry.Insets;
 
 public class CatalogController implements Initializable {

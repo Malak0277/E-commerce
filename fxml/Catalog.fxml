@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.CatalogController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.CatalogController">
     <children>
         <TabPane layoutX="67.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="680.0" rotateGraphic="true" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -213,44 +213,44 @@
                             <stops>
                                 <Stop>
                                     <color>
-                                        <Color blue="0.5882353186607361" green="0.7215686440467834" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.006729475100942127">
                                     <color>
-                                        <Color blue="0.5882353186607361" green="0.7215686440467834" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.1926829268292683">
                                     <color>
-                                        <Color blue="0.5647059082984924" green="0.7098039388656616" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7098039388656616" blue="0.5647059082984924" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.41144995568394443">
                                     <color>
-                                        <Color blue="0.5882353186607361" green="0.7215686440467834" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.6184387617765815">
                                     <color>
-                                        <Color blue="0.615686297416687" green="0.7333333492279053" red="0.9254902005195618" />
+                                        <Color red="0.9254902005195618" green="0.7333333492279053" blue="0.615686297416687" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.8085940321045201">
                                     <color>
-                                        <Color blue="0.6392157077789307" green="0.7490196228027344" red="0.9254902005195618" />
+                                        <Color red="0.9254902005195618" green="0.7490196228027344" blue="0.6392157077789307" />
                                     </color>
                                 </Stop>
                                 <Stop offset="1.0">
                                     <color>
-                                        <Color blue="0.6627451181411743" green="0.7607843279838562" red="0.9215686321258545" />
+                                        <Color red="0.9215686321258545" green="0.7607843279838562" blue="0.6627451181411743" />
                                     </color>
                                 </Stop>
                             </stops>
                         </LinearGradient>
                     </textFill>
                     <font>
-                        <Font size="16.0" />
+                        <Font name="Monotype Corsiva" size="20.0" />
                     </font>
                 </Label>
                 <Label fx:id="logout" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="Log out" textAlignment="CENTER">
@@ -259,44 +259,44 @@
                             <stops>
                                 <Stop>
                                     <color>
-                                        <Color blue="0.5882353186607361" green="0.7215686440467834" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.006729475100942127">
                                     <color>
-                                        <Color blue="0.5882353186607361" green="0.7215686440467834" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.1926829268292683">
                                     <color>
-                                        <Color blue="0.5647059082984924" green="0.7098039388656616" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7098039388656616" blue="0.5647059082984924" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.41144995568394443">
                                     <color>
-                                        <Color blue="0.5882353186607361" green="0.7215686440467834" red="0.929411768913269" />
+                                        <Color red="0.929411768913269" green="0.7215686440467834" blue="0.5882353186607361" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.6184387617765815">
                                     <color>
-                                        <Color blue="0.615686297416687" green="0.7333333492279053" red="0.9254902005195618" />
+                                        <Color red="0.9254902005195618" green="0.7333333492279053" blue="0.615686297416687" />
                                     </color>
                                 </Stop>
                                 <Stop offset="0.8085940321045201">
                                     <color>
-                                        <Color blue="0.6392157077789307" green="0.7490196228027344" red="0.9254902005195618" />
+                                        <Color red="0.9254902005195618" green="0.7490196228027344" blue="0.6392157077789307" />
                                     </color>
                                 </Stop>
                                 <Stop offset="1.0">
                                     <color>
-                                        <Color blue="0.6627451181411743" green="0.7607843279838562" red="0.9215686321258545" />
+                                        <Color red="0.9215686321258545" green="0.7607843279838562" blue="0.6627451181411743" />
                                     </color>
                                 </Stop>
                             </stops>
                         </LinearGradient>
                     </textFill>
                     <font>
-                        <Font size="16.0" />
+                        <Font name="Monotype Corsiva" size="20.0" />
                     </font>
                 </Label>
             </children>

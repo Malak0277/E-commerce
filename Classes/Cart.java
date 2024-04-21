@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,6 +62,10 @@ public class Cart {
         for (Map.Entry<Item, Integer> entry : itemsAmounts.entrySet())
             price += entry.getKey().getPrice() * entry.getValue();
         totalPrice = price;
+    }
+
+    public Map<Item, Integer> getItems(){
+        return itemsAmounts;
     }
 
     public double getTotalPrice() {
