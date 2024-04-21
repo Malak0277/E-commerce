@@ -80,8 +80,9 @@ public class ItemController implements Initializable {
             alert.setContentText("Successfully Added!");
             alert.showAndWait();
         }
+        
    /*System.out.println("My Cart");
-        for (Item i : cart.getItems().keySet()) {
+ for (Item i : cart.getItems().keySet()) {
             System.out.println(i.getName());
         }*/
     }

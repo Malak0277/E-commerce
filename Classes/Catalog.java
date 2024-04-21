@@ -16,7 +16,7 @@ public class Catalog {
     }
 
     public static Item getItem(String bookName) {
-        for (Item item : items)
+      for (Item item : items)
             if (item.getName() == bookName)
                 return item;
         return null;
