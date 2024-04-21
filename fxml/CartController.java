@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -67,48 +68,56 @@ public class CartController implements Initializable {
     Cart c = User.getCurrentUser().getCart();
     private Map<Item, Integer> cartItems = c.getItems();
 
-    @FXML
-    private void handleNavHomeClicked(MouseEvent event) {
-        navigateToMouse(event, "Catalog.fxml");
-    }
-
-    @FXML
-    private void handleNavCartClicked(MouseEvent event) {
-        navigateToMouse(event, "Cart.fxml");
-    }
-
-    public void navigateToMouse(MouseEvent event, String nextPageFXML) {
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
-            root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();}
-        catch (IOException e) {}
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        navCart.setOnMouseClicked(this::handleNavHomeClicked);
-        navHome.setOnMouseClicked(this::handleNavCartClicked);
-
         cart.getChildren().clear();
-        if(cartItems.isEmpty()){
+        if (cartItems.isEmpty()) {
             Label empty = new Label("Empty Cart");
             cart.getChildren().add(empty);
         } else {
-            for (Map.Entry<Item, Integer> currItem: cartItems.entrySet()) {
-                hb = new HBox();
-                bookName.setText(currItem.getKey().getName());
-                price.setText(String.valueOf(currItem.getKey().getPrice()));
-                amount.setText(currItem.getValue().toString());
-                hb.getChildren().add(bookName);
-                hb.getChildren().add(amount);
+            for (Map.Entry<Item, Integer> currItem : cartItems.entrySet()) {
+                HBox hb = new HBox();
+                hb.setPrefHeight(100); // Set preferred height for HBox
+
+                Label bookName = new Label(currItem.getKey().getName());
+                bookName.setPrefHeight(60);
+                bookName.setPrefWidth(192);
+                bookName.setStyle("-fx-font-size: 14px;");
+                HBox.setMargin(bookName, new Insets(20, 10, 0, 10)); // Set margins
+
+                Label price = new Label(String.valueOf(currItem.getKey().getPrice()));
+                price.setPrefHeight(60);
+                price.setPrefWidth(81);
+                price.setStyle("-fx-font-size: 14px;");
+                HBox.setMargin(price, new Insets(20, 0, 0, 0)); // Set margins
+
+                Button decrease = new Button("-");
+                decrease.setPrefHeight(26);
+                decrease.setPrefWidth(28);
+                HBox.setMargin(decrease, new Insets(38, 0, 0, 0)); // Set margins
+
+                Label amount = new Label(String.valueOf(currItem.getValue()));
+                amount.setAlignment(javafx.geometry.Pos.CENTER);
+                amount.setPrefHeight(60);
+                amount.setPrefWidth(45);
+                HBox.setMargin(amount, new Insets(20, 0, 0, 0)); // Set margins
+
+                Button increase = new Button("+");
+                increase.setPrefHeight(26);
+                increase.setPrefWidth(28);
+                HBox.setMargin(increase, new Insets(38, 0, 0, 0)); // Set margins
+
+                Label remove = new Label("🗑");
+                remove.setPrefHeight(60);
+                remove.setPrefWidth(45);
+                remove.setStyle("-fx-font-size: 30px;");
+                HBox.setMargin(remove, new Insets(30, 0, 0, 15)); // Set margins
+
+                hb.getChildren().addAll(bookName, price, decrease, amount, increase, remove);
                 cart.getChildren().add(hb);
             }
             totalPrice.setText(String.valueOf(c.getTotalPrice()));
         }
     }
 }
+
