@@ -15,8 +15,8 @@ public class Catalog {
         items.remove(item);
     }
 
-    public static  Item getItem(String bookName) {
-        for (Item item : items)
+    public static Item getItem(String bookName) {
+      for (Item item : items)
             if (item.getName() == bookName)
                 return item;
         return null;

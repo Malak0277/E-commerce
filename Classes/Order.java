@@ -15,29 +15,41 @@ public class Order {
     private String Address;
     private String Phonenumber;
 
-    //to be written
+    //3shan ynfez el order after paying
     public static Order currrentOrder = null;
 
     //For Selected order from order list to Order mangment
     public static Order SelectedOrder = null;
 
 
-    public Order(){}
-
-    public Order (Cart cart, double totPrice)
-    {
-        this.cart = cart;
-        this.totalPrice = calc_totalPrice(totPrice);
-        status = "Order_Placed";
-        this.OrderID = OrderIDGenerate();
-        time = LocalTime.now();
-    }
-
-    public void orderRequest(String Address, String Phonenumber)
-    {
+    public Order(String Address, String Phonenumber){
         this.Address = Address;
         this.Phonenumber = Phonenumber;
     }
+
+    public Order (Cart cart, String Address, String Phonenumber)
+    {
+        this.cart = cart;
+        this.Address = Address;
+        this.Phonenumber = Phonenumber;
+        totalPrice = calc_totalPrice(cart.getTotalPrice());
+        status = "Order_Placed";
+        this.OrderID = OrderIDGenerate();
+        time = LocalTime.now();
+
+        removeFromStock();
+        this.cart.emptyCart();
+    }
+
+    public removeFromStock(){
+        for (Map.Entry<Item, Integer> currItem: cartItems.entrySet()){
+            Item item = currItem.getKey();
+            Integer amount = currItem.getValue();
+
+            item.ordered(amount);
+        }
+    }
+
 
     public long getTimeDifferenceInSeconds(LocalTime endTime) {
         return this.time.until(endTime, ChronoUnit.SECONDS);
@@ -90,7 +102,13 @@ public class Order {
         return this.OrderID;
     }
     public void cancel_order() {
-        setStatus("Cancelled"); //INCREASE EL STOCK
+        setStatus("Cancelled");
 
+        for (Map.Entry<Item, Integer> currItem: cartItems.entrySet()){
+            Item item = currItem.getKey();
+            Integer amount = currItem.getValue();
+
+            item.unordered(amount);
+        }
     }
 }
