@@ -9,20 +9,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="358.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.ItemController">
+<AnchorPane prefHeight="289.0" prefWidth="207.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.ItemController">
    <children>
-      <VBox prefHeight="358.0" prefWidth="306.0" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);">
+      <VBox prefHeight="290.0" prefWidth="207.0" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);">
          <children>
-            <AnchorPane prefHeight="195.0" prefWidth="306.0">
+            <AnchorPane prefHeight="144.0" prefWidth="225.0">
                <children>
-                  <ImageView fx:id="itemImg" fitHeight="195.0" fitWidth="200.0" layoutX="53.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="itemImg" fitHeight="150.0" fitWidth="100.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" />
                </children>
             </AnchorPane>
             <HBox alignment="CENTER" prefHeight="34.0" prefWidth="306.0">
                <children>
                   <Label fx:id="itemName" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="195.0" style="-fx-background-color: #ffffffff;" text="Name">
                      <HBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0" top="5.0" />
                      </HBox.margin>
                   </Label>
                </children>

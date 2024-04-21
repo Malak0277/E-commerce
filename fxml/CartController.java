@@ -1,64 +1,88 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.*;
 
-public class CartController {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.ResourceBundle;
+
+public class CartController implements Initializable {
+    @FXML
+    private Label amount;
 
     @FXML
-    private BorderPane body;
+    private Label bookName;
 
     @FXML
-    private Label closeButton;
+    private VBox cart;
 
     @FXML
-    private VBox componentBox;
+    private Button decrease;
 
     @FXML
-    private BorderPane contentPane;
+    private HBox hb;
 
     @FXML
-    private Pane handPaneMac;
+    private Button increase;
+
+    @FXML
+    private Label logout;
+
+    @FXML
+    private Label logout1;
+
+    @FXML
+    private Region navCart;
 
     @FXML
     private Region navHome;
 
     @FXML
-    private AnchorPane root;
+    private Button orderNow;
 
     @FXML
-    private ScrollPane scrollPane;
+    private Label price;
 
     @FXML
-    private VBox sideArea;
-
-    @FXML
-    private HBox sideControls;
+    private Label remove;
 
     @FXML
     private VBox sideNav;
 
     @FXML
-    private void handleNavHomeClick(MouseEvent event) {
-        navigateTo(event, "Catalog.fxml");
+    private Label totalPrice;
+
+    ///////////////EDIT BASED ON WHERE IT BE CALLED
+    Cart c;
+    private Map<Item, Integer> cartItems = c.getItems();
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cart.getChildren().clear();
+        if(cartItems.isEmpty()){
+            Label empty = new Label("Empty Cart");
+            cart.getChildren().add(empty);
+        } else {
+            for (Map.Entry<Item, Integer> currItem: cartItems.entrySet()) {
+                hb = new HBox();
+                bookName.setText(currItem.getKey().getName());
+                price.setText(String.valueOf(currItem.getKey().getPrice()));
+                amount.setText(currItem.getValue().toString());
+                hb.getChildren().add(bookName);
+                hb.getChildren().add(amount);
+                cart.getChildren().add(hb);
+            }
+            totalPrice.setText(String.valueOf(c.getTotalPrice()));
+        }
     }
 
-    public void navigateTo(ActionEvent event, String nextPageFXML) {
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader (getClass().getResource(nextPageFXML));
-            root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();}
-        catch (IOException e) {}
-    }
+
 
 }
