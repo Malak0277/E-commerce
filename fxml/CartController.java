@@ -68,7 +68,6 @@ public class CartController implements Initializable {
     Cart c = User.getCurrentUser().getCart();
     private Map<Item, Integer> cartItems = c.getItems();
 
-<<<<<<< HEAD
     @FXML
     private void handleNavHomeClick(MouseEvent event) {
         navigateToMouse(event, "Catalog.fxml");
@@ -123,8 +122,6 @@ public class CartController implements Initializable {
         catch (IOException e) {}
     }
 
-=======
->>>>>>> e4e67685d0ca53344360fc554484e548be6667b7
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cart.getChildren().clear();
@@ -133,7 +130,6 @@ public class CartController implements Initializable {
             cart.getChildren().add(empty);
         } else {
             for (Map.Entry<Item, Integer> currItem : cartItems.entrySet()) {
-<<<<<<< HEAD
                 if(currItem.getKey().getStock() == 0){
                     c.removeFromCart(currItem.getKey());
                     continue;
@@ -142,36 +138,22 @@ public class CartController implements Initializable {
                 HBox hb = new HBox();
                 hb.setPrefHeight(100); // Set preferred height for HBox
                 
-=======
-                HBox hb = new HBox();
-                hb.setPrefHeight(100); // Set preferred height for HBox
-
->>>>>>> e4e67685d0ca53344360fc554484e548be6667b7
                 Label bookName = new Label(currItem.getKey().getName());
                 bookName.setPrefHeight(60);
                 bookName.setPrefWidth(192);
                 bookName.setStyle("-fx-font-size: 14px;");
                 HBox.setMargin(bookName, new Insets(20, 10, 0, 10)); // Set margins
-<<<<<<< HEAD
                 
-=======
-
->>>>>>> e4e67685d0ca53344360fc554484e548be6667b7
                 Label price = new Label(String.valueOf(currItem.getKey().getPrice()));
                 price.setPrefHeight(60);
                 price.setPrefWidth(81);
                 price.setStyle("-fx-font-size: 14px;");
                 HBox.setMargin(price, new Insets(20, 0, 0, 0)); // Set margins
-<<<<<<< HEAD
                 
-=======
-
->>>>>>> e4e67685d0ca53344360fc554484e548be6667b7
                 Button decrease = new Button("-");
                 decrease.setPrefHeight(26);
                 decrease.setPrefWidth(28);
                 HBox.setMargin(decrease, new Insets(38, 0, 0, 0)); // Set margins
-<<<<<<< HEAD
                 
                 
                 Integer amountValue;
@@ -181,10 +163,6 @@ public class CartController implements Initializable {
                     amountValue = currItem.getValue();
 
                 Label amount = new Label(String.valueOf(amountValue));
-=======
-
-                Label amount = new Label(String.valueOf(currItem.getValue()));
->>>>>>> e4e67685d0ca53344360fc554484e548be6667b7
                 amount.setAlignment(javafx.geometry.Pos.CENTER);
                 amount.setPrefHeight(60);
                 amount.setPrefWidth(45);
