@@ -22,17 +22,23 @@ public class Order {
     public static Order SelectedOrder = null;
 
 
-    public Order(){}
+    public Order(String Address, String Phonenumber){
+        this.Address = Address;
+        this.Phonenumber = Phonenumber;
+    }
 
-    public Order (Cart cart, double totPrice)
+    public Order (Cart cart, String Address, String Phonenumber)
     {
         this.cart = cart;
-        this.totalPrice = calc_totalPrice(totPrice);
+        this.Address = Address;
+        this.Phonenumber = Phonenumber;
+        totalPrice = calc_totalPrice(cart.getTotalPrice());
         status = "Order_Placed";
         this.OrderID = OrderIDGenerate();
         time = LocalTime.now();
 
-        removeFromCart();
+        removeFromStock();
+        this.cart.emptyCart();
     }
 
     public removeFromStock(){
@@ -44,11 +50,6 @@ public class Order {
         }
     }
 
-    public void orderRequest(String Address, String Phonenumber)
-    {
-        this.Address = Address;
-        this.Phonenumber = Phonenumber;
-    }
 
     public long getTimeDifferenceInSeconds(LocalTime endTime) {
         return this.time.until(endTime, ChronoUnit.SECONDS);

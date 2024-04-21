@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="631.0" style="-fx-background-color: #FAE2BF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.OmangementController">
    <children>
-      <Label layoutX="153.0" prefHeight="28.0" prefWidth="402.0" text="Order Managment" textFill="#b71414" underline="true">
+      <Label layoutX="114.0" prefHeight="28.0" prefWidth="402.0" text="Order Managment" textFill="#b71414" underline="true">
          <font>
             <Font name="System Bold Italic" size="46.0" />
          </font>
