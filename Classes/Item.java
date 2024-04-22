@@ -18,14 +18,7 @@ public class Item {
         stock -= amount;
     }
 
-    public void refillStock(int newStock) {
-        if (newStock < 0) {
-            throw new IllegalArgumentException("Stock amount must be non-negative.");
-        }
-        stock += newStock;
-    }
-
-    public void unordered(int amount) { //CANCEL!
+    public void unordered(int amount) { 
         stock += amount;
     }
 
