@@ -110,6 +110,49 @@ public class CatalogController implements Initializable {
 
         scienceCatalog.addItem(new Item("A Brief History of Time", "Science", 13.49, 22, "brief_history_of_time.jpg"));
         scienceCatalog.addItem(new Item("The Martian", "Science", 12.99, 20, "martian.jpg"));
+
+        classicCatalog.addItem(new Item("Jane Eyre", "Classic", 9.75, 18, "jane_eyre.jpg"));
+        classicCatalog.addItem(new Item("Moby-Dick", "Classic", 11.99, 20, "moby_dick.jpg"));
+        classicCatalog.addItem(new Item("War and Peace", "Classic", 15.25, 25, "war_and_peace.jpg"));
+        classicCatalog.addItem(new Item("The Picture of Dorian Gray", "Classic", 10.50, 15, "dorian_gray.jpg"));
+        classicCatalog.addItem(new Item("Wuthering Heights", "Classic", 8.99, 22, "wuthering_heights.jpg"));
+
+        romanceCatalog.addItem(new Item("Sense and Sensibility", "Romance", 8.25, 18, "sense_and_sensibility.jpg"));
+        romanceCatalog.addItem(new Item("Emma", "Romance", 9.50, 20, "emma.jpg"));
+        romanceCatalog.addItem(new Item("The Notebook", "Romance", 7.25, 15, "notebook.jpg"));
+        romanceCatalog.addItem(new Item("Gone with the Wind", "Romance", 12.99, 25, "gone_with_the_wind.jpg"));
+        romanceCatalog.addItem(new Item("P.S. I Love You", "Romance", 8.99, 22, "ps_i_love_you.jpg"));
+
+        fictionCatalog.addItem(new Item("Brave New World", "Fiction", 10.99, 18, "brave_new_world.jpg"));
+        fictionCatalog.addItem(new Item("The Catch-22", "Fiction", 9.75, 20, "catch_22.jpg"));
+        fictionCatalog.addItem(new Item("The Alchemist", "Fiction", 11.50, 15, "alchemist.jpg"));
+        fictionCatalog.addItem(new Item("The Road", "Fiction", 8.99, 22, "the_road.jpg"));
+        fictionCatalog.addItem(new Item("The Kite Runner", "Fiction", 10.25, 25, "kite_runner.jpg"));
+
+        adventureCatalog.addItem(new Item("Treasure Island", "Adventure", 7.99, 18, "treasure_island.jpg"));
+        adventureCatalog.addItem(new Item("Journey to the Center of the Earth", "Adventure", 8.50, 20, "journey_to_the_center.jpg"));
+        adventureCatalog.addItem(new Item("The Count of Monte Cristo", "Adventure", 12.75, 15, "count_of_monte_cristo.jpg"));
+        adventureCatalog.addItem(new Item("Around the World in Eighty Days", "Adventure", 9.99, 22, "around_the_world.jpg"));
+        adventureCatalog.addItem(new Item("The Adventures of Tom Sawyer", "Adventure", 7.25, 25, "tom_sawyer.jpg"));
+
+        mysteryCatalog.addItem(new Item("And Then There Were None", "Mystery", 8.99, 18, "and_then_there_were_none.jpg"));
+        mysteryCatalog.addItem(new Item("The Hound of the Baskervilles", "Mystery", 9.50, 20, "hound_of_baskervilles.jpg"));
+        mysteryCatalog.addItem(new Item("In Cold Blood", "Mystery", 11.75, 15, "in_cold_blood.jpg"));
+        mysteryCatalog.addItem(new Item("The Silence of the Lambs", "Mystery", 10.99, 22, "silence_of_the_lambs.jpg"));
+        mysteryCatalog.addItem(new Item("The Big Sleep", "Mystery", 8.25, 25, "big_sleep.jpg"));
+
+        historyCatalog.addItem(new Item("The Rise and Fall of the Third Reich", "History", 16.99, 18, "rise_and_fall.jpg"));
+        historyCatalog.addItem(new Item("1491: New Revelations of the Americas Before Columbus", "History", 13.50, 20, "1491.jpg"));
+        historyCatalog.addItem(new Item("Band of Brothers", "History", 11.75, 15, "band_of_brothers.jpg"));
+        historyCatalog.addItem(new Item("1776", "History", 12.99, 22, "1776.jpg"));
+        historyCatalog.addItem(new Item("The Wright Brothers", "History", 10.25, 25, "wright_brothers.jpg"));
+
+        scienceCatalog.addItem(new Item("Sapiens: A Brief History of Humankind", "Science", 14.25, 18, "sapiens.jpg"));
+        scienceCatalog.addItem(new Item("Astrophysics for People in a Hurry", "Science", 11.50, 20, "astrophysics.jpg"));
+        scienceCatalog.addItem(new Item("The Selfish Gene", "Science", 10.99, 15, "selfish_gene.jpg"));
+        scienceCatalog.addItem(new Item("Cosmos", "Science", 13.75, 22, "cosmos.jpg"));
+        scienceCatalog.addItem(new Item("The Double Helix", "Science", 9.25, 25, "double_helix.jpg"));
+
     }
 
 
