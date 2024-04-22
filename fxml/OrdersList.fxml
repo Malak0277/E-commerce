@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="631.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderListController">
+<AnchorPane fx:id="Main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="631.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testingproject.OrderListController">
    <children>
-      <AnchorPane fx:id="Data" prefHeight="342.0" prefWidth="631.0" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);" stylesheets="@../../../../../Software%20Testing,%20Validation,%20and%20Verification/Major%20Task/Sample%20GitHub%20E-commerce/OneClickAway-E-Commerce/src/sample/style1.css">
+      <AnchorPane fx:id="Data" prefHeight="342.0" prefWidth="631.0" style="-fx-background-color: linear-gradient(to bottom, #ebc2a9, #ecbfa3, #ecbb9d, #edb896, #edb590, #edb590, #edb590, #edb590, #edb896, #ecbb9d, #ecbfa3, #ebc2a9);" stylesheets="@../../../style1.css">
          <children>
             <Label layoutX="25.0" layoutY="30.0" prefHeight="26.0" prefWidth="117.0" text="Orders List" textFill="#665220">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="nextBtn" layoutX="544.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #fff8dc;" text="Next" textFill="#665220">
+            <Button fx:id="nextBtn" layoutX="544.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #fff8dc;" text="View" textFill="#665220">
                <font>
                   <Font size="14.0" />
                </font>
@@ -25,7 +25,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <ListView fx:id="cards" layoutX="25.0" layoutY="57.0" prefHeight="238.0" prefWidth="580.0" />
+            <ListView fx:id="cards" layoutX="25.0" layoutY="57.0" prefHeight="233.0" prefWidth="584.0" />
             <Label fx:id="MessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="299.0" prefHeight="27.0" prefWidth="206.0" textAlignment="CENTER" textFill="#bf2727">
                <font>
                   <Font name="Goudy Old Style" size="14.0" />

@@ -87,15 +87,25 @@ public class CartController implements Initializable {
     }
 
     @FXML
-    private void increaseOnAction(ActionEvent event) {
-        User.getCurrentUser().getCart().increaseAmount(null);
+    private void increaseOnAction(ActionEvent event, Item item, Label label) {
+        int newValue = c.increaseAmount(item);
+        label.setText(String.valueOf(newValue));
     }
-
+    
     @FXML
-    private void decreaseOnAction(ActionEvent event) {
-        User.getCurrentUser().getCart().decreaseAmount(null);
+    private void decreaseOnAction(ActionEvent event, Item item, Label label) {
+        int newValue = c.decreaseAmount(item);
+        if(newValue != 0)
+            label.setText(String.valueOf(newValue));
+
     }
 
+    
+    @FXML
+    private void removeOnAction(ActionEvent event, Item item) {
+        c.removeFromCart(item);
+    }
+    
     @FXML
     private void orderNowOnAction(ActionEvent event) {
         navigateTo(event, "orderRequest.fxml");
@@ -187,16 +197,18 @@ public class CartController implements Initializable {
 
                 hb.getChildren().addAll(bookName, price, decrease, amount, increase, remove);
                 cart.getChildren().add(hb);
+
+                increase.setOnAction(event -> increaseOnAction(event, currItem.getKey(), amount));
+                decrease.setOnAction(event -> decreaseOnAction(event, currItem.getKey(), amount));
+                remove.setOnMouseClicked(event -> removeOnAction(event, currItem.getKey()));
             }
             totalPrice.setText(String.valueOf((float)c.getTotalPrice() + " $"));
         }
-
+        
         navHome.setOnMouseClicked(this::handleNavHomeClick);
         orders.setOnMouseClicked(this::handleOrdersClick);
         logout.setOnMouseClicked(this::handleLogoutClick);
-
-        increase.setOnAction(event -> increaseOnAction(event));
-        decrease.setOnAction(event -> decreaseOnAction(event));
         orderNow.setOnAction(event -> orderNowOnAction(event));
+        
     }
 }

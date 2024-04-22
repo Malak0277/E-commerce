@@ -24,21 +24,26 @@ public class Cart {
         setTotalPrice();
     }
 
-    public void increaseAmount(Item item) {
+    public int increaseAmount(Item item) {
         int currentAmount = itemsAmounts.get(item);
-        itemsAmounts.put(item, currentAmount + 1);
+        int newAmount = currentAmount + 1;
+        if (newAmount > item.getStock())
+            return currentAmount;
+        itemsAmounts.put(item, newAmount);
         setTotalPrice();
+        return newAmount;
     }
-
-    public void decreaseAmount(Item item) {
+    
+    public int decreaseAmount(Item item) {
         int currentAmount = itemsAmounts.get(item);
-        if (currentAmount == 1)
+        int newAmount = currentAmount - 1;
+        if (newAmount == 0)
             removeFromCart(item);
-        else {
-            itemsAmounts.put(item, currentAmount - 1);
-            //item.unordered(1);
-        }
+        else 
+            itemsAmounts.put(item, newAmount);
+        
         setTotalPrice();
+        return newAmount;
     }
 
 
