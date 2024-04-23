@@ -36,6 +36,7 @@ public class Cart {
         setTotalPrice();
     }
 
+
     public void decreaseAmount(Item item) {
         if (!itemsAmounts.containsKey(item))
             throw new IllegalArgumentException("Item not found in cart.");
