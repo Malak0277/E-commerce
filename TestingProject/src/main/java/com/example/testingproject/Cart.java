@@ -1,51 +1,77 @@
 package com.example.testingproject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class Cart {
-    private ArrayList<Item> myItems;
-    private ArrayList<Integer> itemAmounts;
-	private double totalPrice;
+    private Map<Item, Integer> itemsAmounts;
+    private double totalPrice;
 
+    public Cart() {
+        this.itemsAmounts = new HashMap<>();
+        this.totalPrice = 0.0;
+    }
 
-    public Cart(){ }
+    public Cart(Cart other) {
+        this.itemsAmounts = new HashMap<>(other.itemsAmounts);
+        this.totalPrice = other.totalPrice;
+    }
 
-    public void addToCart(Item item, int amount){
-        int index = myItems.indexOf(item);
-        if (index == -1){
-            myItems.add(item);
-            itemAmounts.add(amount);
-        }
-        else{
-            int oldAmount = itemAmounts.get(index);
-            int newAmount = oldAmount + amount; 
-            itemAmounts.set(index, newAmount); 
-        }
-
+    public void addToCart(Item item, int amount) {
+        int currentAmount = itemsAmounts.getOrDefault(item, 0);
+        itemsAmounts.put(item, currentAmount + amount);
+        //item.ordered(amount);
         setTotalPrice();
     }
 
-    public void removeFromCart(Item item){
-        int index = myItems.indexOf(item);
-        myItems.remove(index);
-        itemAmounts.remove(index);
-
+    public void removeFromCart(Item item) {
+        itemsAmounts.remove(item);
+        //item.unordered(item.itemsAmounts);
         setTotalPrice();
     }
 
-    public void emptyCart(){
-        myItems.clear();
-        itemAmounts.clear();
+    public int increaseAmount(Item item) {
+        int currentAmount = itemsAmounts.get(item);
+        int newAmount = currentAmount + 1;
+        if (newAmount > item.getStock())
+            return currentAmount;
+        itemsAmounts.put(item, newAmount);
+        setTotalPrice();
+        return newAmount;
+    }
 
+    public int decreaseAmount(Item item) {
+        int currentAmount = itemsAmounts.get(item);
+        int newAmount = currentAmount - 1;
+        if (newAmount == 0)
+            removeFromCart(item);
+        else
+            itemsAmounts.put(item, newAmount);
+
+        setTotalPrice();
+        return newAmount;
+    }
+
+
+    public void emptyCart() {
+        itemsAmounts.clear();
         setTotalPrice();
     }
 
-    public void setTotalPrice(){
+    private void setTotalPrice() {
         double price = 0;
-        for (int i = 0; i < myItems.size(); i++) {
-            price += myItems.get(i).getPrice() * itemAmounts.get(i);
-        }
+        for (Map.Entry<Item, Integer> entry : itemsAmounts.entrySet())
+            price += entry.getKey().getPrice() * entry.getValue();
         totalPrice = price;
     }
-    
+
+    public Map<Item, Integer> getItems(){
+        return itemsAmounts;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 }

@@ -16,12 +16,12 @@
     <children>
         <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="409.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../../../images/login_signup/icon1.png" />
+                <Image url="@../../../images/login_signup/icon1.png" />
             </image>
         </ImageView>
         <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="409.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../../../images/login_signup/lock.png" />
+                <Image url="@../../../images/login_signup/lock.png" />
             </image>
         </ImageView>
         <TextField fx:id="UsernameTF" layoutX="475.0" layoutY="138.0" prefHeight="26.0" prefWidth="215.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: black;">
@@ -69,7 +69,7 @@
         </Label>
         <ImageView fitHeight="530.0" fitWidth="376.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../../../images/login_signup/login.jpeg" />
+                <Image url="@../../../images/login_signup/login.jpeg" />
             </image>
         </ImageView>
         <Text fill="#665220d6" layoutX="461.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME !" wrappingWidth="224.79997558593755">

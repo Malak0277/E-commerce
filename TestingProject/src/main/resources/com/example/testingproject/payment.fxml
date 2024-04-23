@@ -44,7 +44,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="nextBtn" layoutX="328.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #fff8dc;" text="Next" textFill="#665220">
+            <Button fx:id="nextBtn" layoutX="328.0" layoutY="298.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" style="-fx-background-color: #fff8dc;" text="Pay" textFill="#665220">
                <font>
                   <Font size="14.0" />
                </font>
@@ -54,11 +54,16 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="MessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="266.0" prefHeight="27.0" prefWidth="250.0" textAlignment="CENTER" textFill="#bf2727">
+               <font>
+                  <Font name="Goudy Old Style" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <ImageView fitHeight="174.0" fitWidth="183.0" layoutX="429.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../images/payment/Credit_Card.jpeg" />
+            <Image url="@../../../images/payment/Credit_Card.jpeg" />
          </image>
       </ImageView>
       <Label layoutX="421.0" layoutY="32.0" prefHeight="66.0" prefWidth="190.0" text="Payment" textAlignment="JUSTIFY" textFill="#665220">

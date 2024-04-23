@@ -1,62 +1,57 @@
 package com.example.testingproject;
 
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Visa {
-    private String visa_holder_name;
 	private String Visa_no;
-	private int month;
-	private int year;
 	private int cvv;
-	
+
 	public Visa(){}
 
-	public Visa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
+	public Visa(String Visa_no, int cvv)
 	{
-		this.visa_holder_name = visa_holder_name;
 		this.Visa_no = Visa_no;
-		this.month = month;
-		this.year = year;
 		this.cvv = cvv;
 	}
-	
-	public boolean validvisa()
+
+	public boolean CreateVisa(String Visano, int Cvv)
 	{
-		Calendar cal = Calendar.getInstance();
-		if (this.year < cal.get(Calendar.YEAR))
+		if(User.getCurrentUser().Visa_Exist(Visano))
 			return false;
-		
-		else if(this.year == Year.now().getValue())
-			if(this.month < cal.get(Calendar.MONTH))
-				return false;
-		
-		return true;
-	}
-	
-	public boolean addVisa(String visa_holder_name, String Visa_no, int month, int year, int cvv)
-	{
-		if(this.validvisa())
+		else
 		{
-			new Visa(visa_holder_name, Visa_no, month, year, cvv);
+			Visa v = new Visa(Visano, Cvv);
+			User.getCurrentUser().addVisa(v);
 			return true;
 		}
-		
-		return false;		
 	}
-	
-	/*public String[] get_Visas()
+
+	public boolean validvisa(int year, int month)
 	{
-		String [] info = {this.Visa_no};
-		
-		return info;
+		Calendar cal = Calendar.getInstance();
+		int currentYear = cal.get(Calendar.YEAR)% 100;
+		int currentMonth = cal.get(Calendar.MONTH) + 1;
+
+		if (year < currentYear || year > currentYear + 5) {
+			return false;
+		}
+		else if (year == currentYear && month < currentMonth) {
+			return false;
+		}
+		return true;
 	}
-	
-	public boolean CVV_check(int cvv, String Visa_no)
-	{
-		if(cvv == this.cvv)
+
+	public boolean CVV_check(int cvv){
+		if(this.cvv == cvv)
 			return true;
-		
+
 		return false;
-	}*/
+	}
+
+	public String getVisaNumber(){
+		return Visa_no;
+	}
+
 }

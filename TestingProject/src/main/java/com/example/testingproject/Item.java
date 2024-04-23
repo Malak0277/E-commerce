@@ -1,37 +1,46 @@
 package com.example.testingproject;
 
 public class Item {
-	private String genre;
-	private String bookName;
-	private double price;
-	private int stock;
-	private int amount;
-	
-	public Item (String genre, String bookName, double price, int stock)
-	{
-		this.genre = genre;
-		this.bookName = bookName;
-		this.price = price;
-		this.stock = stock;
-	}
-	
-	public void ordered(int amount)
-	{
-		stock -= amount;
-	}
-	
-	public void refill_Stock(int newStock)
-	{
-		stock += newStock;
-	}
-	
-	public double getPrice()
-	{
-		return price;
-	}
+    private String name;
+    private String genre;
+    private double price;
+    private int stock;
+    private String image;
 
-	public double getStock()
-	{
-		return stock;
-	}
+    public Item (String name, String genre, double price, int stock, String image)
+    {
+        this.name = name;
+        this.genre = genre;
+        this.price = price;
+        this.stock = stock;
+        this.image = image;
+    }
+
+    public void ordered(int amount) {
+        stock -= amount;
+    }
+
+    public void unordered(int amount) {
+        stock += amount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+//    public String getGenre() {
+//        return genre;
+//    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public String getImage() {
+        return "/images/Books/" + image;
+    }
 }
