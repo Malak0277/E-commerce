@@ -20,6 +20,8 @@ public class Cart {
     }
 
     public void addToCart(Item item, int amount) {
+        if(amount > item.getStock())
+            return;
         int currentAmount = itemsAmounts.getOrDefault(item, 0);
         itemsAmounts.put(item, currentAmount + amount);
         //item.ordered(amount);
