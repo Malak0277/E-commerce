@@ -64,13 +64,14 @@ public class User {
 		return false;
 	}
 
-	public boolean signup(String UserName)
+	public boolean signup(String FN, String LN, String UserName, String Password)
 	{
 		User foundUser = getUser(UserName);
 
 		if (foundUser == null)
 		{
 			userIndex = Accounts.size();
+			CreateAccount(FN, LN, UserName, Password);
 			return true;
 		}
 
@@ -91,6 +92,13 @@ public class User {
 
 	public void addVisa(Visa Visa){
 		Visas.add(Visa);
+		for (Visa Visa1 : Visas) {
+			System.out.println(Visa1.getVisaNumber());
+		}
+	}
+
+	public void addCart(Cart cart){
+		this.myCart = cart;
 	}
 
 	public ArrayList<Visa> get_visas(){
@@ -109,6 +117,7 @@ public class User {
 		}
 		return null;
 	}
+
 
 	/*public void orderGenerator()
 	{
@@ -129,7 +138,7 @@ public class User {
 		return UserName;
 	}
 
-    public Cart getCart() {
+	public Cart getCart() {
 		return myCart;
-    }
+	}
 }
