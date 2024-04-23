@@ -148,6 +148,7 @@ public class CartController implements Initializable {
             empty.setAlignment(Pos.CENTER);
             empty.setStyle("-fx-font-weight: bold; -fx-font-size: 18px; -fx-padding: 150px;");
             cart.getChildren().add(empty);
+            orderNow.setDisable(true);
         } else {
             for (Map.Entry<Item, Integer> currItem : cartItems.entrySet()) {
                 if(currItem.getKey().getStock() == 0){

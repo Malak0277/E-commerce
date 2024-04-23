@@ -15,10 +15,10 @@ public class Catalog {
         allitems.add(item);
     }
 
-    public void removeItem(Item item) {
+    /*public void removeItem(Item item) {
         items.remove(item);
         allitems.remove(item);
-    }
+    }*/
 
     public static  Item getItem(String bookName) {
         for (Item item : allitems)
@@ -31,7 +31,7 @@ public class Catalog {
         return items;
     }
 
-    public boolean isIn(String bookName) {
+    /*public boolean isIn(String bookName) {
         for (Item item : items)
             if (item.getName() == bookName)
                 return true;
@@ -44,7 +44,7 @@ public class Catalog {
             if (item.getName().toLowerCase().contains(keyword.toLowerCase()))
                 searchResults.add(item);
         return searchResults;
-    }
+    }*/
 
     public int size(){
         return items.size();
