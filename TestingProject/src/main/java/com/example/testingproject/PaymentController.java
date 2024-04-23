@@ -84,9 +84,6 @@ public class PaymentController {
             return;
         }
 
-        visa = new Visa(num, cvv);
-        User.getCurrentUser().addVisa(visa);
-
         Cart car = new Cart(User.getCurrentUser().getCart());
         Order order = new Order(car, Order.currrentOrder.getAddress(), Order.currrentOrder.getPhoneNumber());
         User.getCurrentUser().addOrder(order);

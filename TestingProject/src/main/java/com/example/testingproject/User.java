@@ -74,7 +74,6 @@ public class User {
 			CreateAccount(FN, LN, UserName, Password);
 			return true;
 		}
-
 		return false;
 	}
 
@@ -87,6 +86,7 @@ public class User {
 	}
 
 	public void addOrder(Order o){
+		myCart.emptyCart();
 		Orders.add(o);
 	}
 
