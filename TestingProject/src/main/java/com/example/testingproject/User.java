@@ -92,13 +92,20 @@ public class User {
 
 	public void addVisa(Visa Visa){
 		Visas.add(Visa);
-		for (Visa Visa1 : Visas) {
-			System.out.println(Visa1.getVisaNumber());
-		}
 	}
 
 	public void addCart(Cart cart){
 		this.myCart = cart;
+	}
+
+	public boolean Visa_Exist(String num)
+	{
+		for (Visa v : Visas) {
+			if(num.equals(v.getVisaNumber())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public ArrayList<Visa> get_visas(){
@@ -117,22 +124,6 @@ public class User {
 		}
 		return null;
 	}
-
-
-	/*public void orderGenerator()
-	{
-		Item i = new Item("Ain Shams", "Horror", 10, 250);
-		Cart c = new Cart();
-		c.addToCart(i, 3);
-		c.setTotalPrice();
-		double totalPrice = c.getTotalPrice();
-		Order o1 = new Order(c, totalPrice);
-		o1.orderRequest("ABC", "01054789346");
-		Order o2 = new Order(c, totalPrice);
-		o2.orderRequest("DFG", "01054789348");
-		Orders.add(o1);
-		Orders.add(o2);
-	}*/
 
 	public String getUserName(){
 		return UserName;

@@ -79,11 +79,9 @@ public class PaymentController {
             return;
         }
 
-        for (Visa v : User.getCurrentUser().get_visas()) {
-            if(num.equals(v.getVisaNumber())){
-                MessageLabel.setText("Visa already exists!");
-                return;
-            }
+        if(!visa.CreateVisa(num, cvv)){
+            MessageLabel.setText("Visa already exists!");
+            return;
         }
 
         visa = new Visa(num, cvv);
