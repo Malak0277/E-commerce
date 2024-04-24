@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -90,22 +89,28 @@ public class CartController implements Initializable {
     private void increaseOnAction(ActionEvent event, Item item, Label label) {
         int newValue = c.increaseAmount(item);
         label.setText(String.valueOf(newValue));
+        totalPrice.setText(String.valueOf((float)c.getTotalPrice() + " $"));
     }
-    
+
     @FXML
     private void decreaseOnAction(ActionEvent event, Item item, Label label) {
         int newValue = c.decreaseAmount(item);
-        if(newValue != 0)
+        if(newValue != 0) {
             label.setText(String.valueOf(newValue));
+            totalPrice.setText(String.valueOf((float) c.getTotalPrice() + " $"));
+        }
+        else
+            GUIadding();
 
     }
 
-    
+
     @FXML
-    private void removeOnAction(ActionEvent event, Item item) {
+    private void removeOnAction(MouseEvent event, Item item) {
         c.removeFromCart(item);
+        GUIadding();
     }
-    
+
     @FXML
     private void orderNowOnAction(ActionEvent event) {
         navigateTo(event, "orderRequest.fxml");
@@ -135,8 +140,8 @@ public class CartController implements Initializable {
         catch (IOException e) {}
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void GUIadding()
+    {
         cart.getChildren().clear();
         if (cartItems.isEmpty()) {
             Label empty = new Label("Empty Cart");
@@ -158,7 +163,6 @@ public class CartController implements Initializable {
                 bookName.setPrefWidth(160);
                 bookName.setStyle("-fx-font-size: 14px;");
                 HBox.setMargin(bookName, new Insets(20, 10, 0, 25)); // Set margins
-                System.out.println(currItem.getKey().getName() + "\n");
 
                 Label price = new Label(String.valueOf(currItem.getKey().getPrice()) + " $");
                 price.setPrefHeight(60);
@@ -204,11 +208,16 @@ public class CartController implements Initializable {
             }
             totalPrice.setText(String.valueOf((float)c.getTotalPrice() + " $"));
         }
-        
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        GUIadding();
+
         navHome.setOnMouseClicked(this::handleNavHomeClick);
         orders.setOnMouseClicked(this::handleOrdersClick);
         logout.setOnMouseClicked(this::handleLogoutClick);
         orderNow.setOnAction(event -> orderNowOnAction(event));
-        
+
     }
 }

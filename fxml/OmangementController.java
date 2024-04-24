@@ -42,7 +42,7 @@ public class OmangementController {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this order?", ButtonType.YES, ButtonType.NO);
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.YES) {
-			o.setStatus("Cancelled");
+			o.cancel_order();
 			System.out.println(o.getStatus());
 			StatusSwitch(o.getStatus());
 		}

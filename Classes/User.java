@@ -27,7 +27,7 @@ public class User {
 	}
 
 
-	public void CreateAccount(String FN, String LN, String UserName, String Password)
+	private void CreateAccount(String FN, String LN, String UserName, String Password)
 	{
 		User e = new User(FN, LN, UserName, Password);
 		Accounts.add(e);
@@ -62,13 +62,14 @@ public class User {
 		return false;
 	}
 
-	public boolean signup(String UserName)
+	public boolean signup(String FN, String LN, String UserName, String Password)
 	{
 		User foundUser = getUser(UserName);
 
 		if (foundUser == null)
 		{
 			userIndex = Accounts.size();
+			CreateAccount(FN, LN, UserName, Password);
 			return true;
 		}
 
@@ -115,9 +116,6 @@ public class User {
 		return null;
 	}
 
-    public Cart getCart() {
-		return myCart;
-    }
 
 	/*public void orderGenerator()
 	{

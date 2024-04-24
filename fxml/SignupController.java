@@ -74,12 +74,12 @@ public class SignupController {
         }
 
         User user = new User();
-        if(!user.signup(username)){
+        if(!user.signup(firstName, lastName, username, password)){
             signupmessageLabel.setText("Username already exists");
             return;
         }
 
-        user.CreateAccount(firstName, lastName, username, password);
+        //user.CreateAccount(firstName, lastName, username, password);
 
         navigateTo(event, "Catalog.fxml");
     }
