@@ -208,7 +208,7 @@ public class CatalogController implements Initializable {
                 }
 
                 grid.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(10));
+                GridPane.setMargin(pane, new Insets(8));
             }
 
         } catch (Exception e) {

@@ -75,12 +75,19 @@ public class ItemController implements Initializable {
             alert.setContentText("Out of stock!");
             alert.showAndWait();
         } else {
+            String msg = "Successfully Added!";
+            Integer itemInCart = cart.getItems().get(item);
+            if (itemInCart != null && itemInCart + itemAmount > item.getStock()) {
+                msg = itemAmount - (item.getStock() - itemInCart) + " not available";
+                itemAmount = item.getStock() - itemInCart;
+            }
+
             cart.addToCart(item, itemAmount);
             totalPrice = itemAmount * item.getPrice();
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
             alert.setHeaderText(null);
-            alert.setContentText("Successfully Added!");
+            alert.setContentText(msg);
             alert.showAndWait();
         }
     }
