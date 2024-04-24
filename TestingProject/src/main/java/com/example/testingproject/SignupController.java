@@ -75,8 +75,7 @@ public class SignupController {
             return;
         }
 
-        User user = new User();
-        if(!user.signup(firstName, lastName, username, password)){
+        if(!EcomSystem.getCurrentSystem().signup(firstName, lastName, username, password)){
             signupmessageLabel.setText("Username already exists");
             return;
         }

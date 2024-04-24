@@ -35,13 +35,15 @@ public class OrderListController {
     @FXML
     private Button nextBtn;
 
+    private User user = EcomSystem.getCurrentSystem().getCurrentUser();
+
 
     @FXML
     void nextBtnOnAction(ActionEvent event) {
         String selectedOrderInfo = cards.getSelectionModel().getSelectedItem();
         if (selectedOrderInfo != null) {
             String orderId = extractOrderId(selectedOrderInfo);
-            Order.SelectedOrder = User.getCurrentUser().getOrder(orderId);
+            Order.SelectedOrder = user.getOrder(orderId);
             navigateTo(event, "Omangment.fxml");
         }
         else{
@@ -56,7 +58,7 @@ public class OrderListController {
     }
 
     private void populateOrdersList() {
-        List<Order> ordersList = User.getCurrentUser().get_orders();
+        List<Order> ordersList = user.get_orders();
 
         // Loop through each order and concatenate the required information
         for (Order order : ordersList) {

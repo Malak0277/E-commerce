@@ -38,6 +38,8 @@ public class PaymentExistingCardController {
     private Label MessageLabel;
 
     private Alert alert;
+    
+    private User user = EcomSystem.getCurrentSystem().getCurrentUser();
 
     @FXML
     void nextBtnOnAction(ActionEvent event) {
@@ -61,9 +63,9 @@ public class PaymentExistingCardController {
             return;
         }
 
-        Cart car = new Cart(User.getCurrentUser().getCart());
+        Cart car = new Cart(user.getCart());
         Order order = new Order(car, Order.currrentOrder.getAddress(), Order.currrentOrder.getPhoneNumber());
-        User.getCurrentUser().addOrder(order);
+        user.addOrder(order);
 
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Message");
@@ -82,7 +84,7 @@ public class PaymentExistingCardController {
     @FXML
     public void initialize() {
 
-        User currentUser = User.getCurrentUser();
+        User currentUser = user;
 
 
         // Create a custom cell factory for the ListView

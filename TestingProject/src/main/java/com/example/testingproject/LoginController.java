@@ -57,8 +57,7 @@ public class LoginController {
             return;
         }
 
-        User user = new User();
-        if(user.login(username, password)){
+        if(EcomSystem.getCurrentSystem().login(username, password)){
             navigateTo(event, "Catalog.fxml");
         } else {
             LoginMessageLabel.setText("Wrong username or password");

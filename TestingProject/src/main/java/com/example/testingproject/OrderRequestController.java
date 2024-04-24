@@ -48,6 +48,8 @@ public class OrderRequestController {
     private Label MessageLabel;
 
     private Alert alert;
+    
+    private User user = EcomSystem.getCurrentSystem().getCurrentUser();
 
     @FXML
     void nextBtnOnAction(ActionEvent event, String selectedOption, String selectedRadio) {
@@ -67,10 +69,10 @@ public class OrderRequestController {
 
         Order o = new Order(ad, phoneNumber);
         if (selectedOption.equals("Cash")) {
-            Cart car = new Cart(User.getCurrentUser().getCart());
+            Cart car = new Cart(user.getCart());
             Order order = new Order(car, o.getAddress(), o.getPhoneNumber());
             Order.SelectedOrder = order;
-            User.getCurrentUser().addOrder(Order.SelectedOrder);
+            user.addOrder(Order.SelectedOrder);
 
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
@@ -83,7 +85,7 @@ public class OrderRequestController {
         else {
             Order.currrentOrder = o;
             if(selectedRadio.equals("Existing Visa")){
-                User currentUser = User.getCurrentUser();
+                User currentUser = user;
                 if (currentUser.get_visas().isEmpty()){
                     MessageLabel.setText("You have no existing visas");
                     return;

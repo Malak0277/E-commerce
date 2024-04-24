@@ -36,10 +36,13 @@ public class OmangementController {
 	@FXML
 	private Button i6;
 
+	
+    private User user = EcomSystem.getCurrentSystem().getCurrentUser();
+
 	@FXML
 	public void s6(ActionEvent event) {
 		String OrderID = Order.SelectedOrder.getOrderID();
-		Order o = User.getCurrentUser().getOrder(OrderID);
+		Order o = user.getOrder(OrderID);
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this order?", ButtonType.YES, ButtonType.NO);
 		alert.showAndWait();

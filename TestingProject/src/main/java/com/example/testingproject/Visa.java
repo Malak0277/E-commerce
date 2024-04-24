@@ -16,6 +16,7 @@ public class Visa {
 		this.cvv = cvv;
 	}
 
+	/*/
 	public boolean CreateVisa(String Visano, int Cvv)
 	{
 		if(User.getCurrentUser().Visa_Exist(Visano))
@@ -23,11 +24,8 @@ public class Visa {
 		else
 		{
 			Visa v = new Visa(Visano, Cvv);
-			User.getCurrentUser().addVisa(v);
-			return true;
-		}
 	}
-
+*/
 	public boolean validvisa(int year, int month)
 	{
 		Calendar cal = Calendar.getInstance();

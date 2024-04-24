@@ -49,6 +49,8 @@ public class PaymentController {
 
     private Alert alert;
 
+    private User user = EcomSystem.getCurrentSystem().getCurrentUser();
+
     @FXML
     void nextBtnOnAction(ActionEvent event) {
         String cardHolder = name.getText();
@@ -79,14 +81,17 @@ public class PaymentController {
             return;
         }
 
-        if(!visa.CreateVisa(num, cvv)){
+        if(user.Visa_Exist(num)){
             MessageLabel.setText("Visa already exists!");
             return;
         }
+        
+        Visa v = new Visa(num, cvv);
+		user.addVisa(v);
 
-        Cart car = new Cart(User.getCurrentUser().getCart());
+        Cart car = new Cart(user.getCart());
         Order order = new Order(car, Order.currrentOrder.getAddress(), Order.currrentOrder.getPhoneNumber());
-        User.getCurrentUser().addOrder(order);
+        user.addOrder(order);
 
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Message");

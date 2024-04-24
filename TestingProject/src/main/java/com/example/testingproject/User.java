@@ -11,9 +11,7 @@ public class User {
 	private Cart myCart;
 	private ArrayList<Order> Orders;
 
-	static public int userIndex = -1;
-
-	public static ArrayList<User> Accounts = new ArrayList<>();
+	
 
 	public User(){}
 
@@ -29,61 +27,6 @@ public class User {
 	}
 
 
-	public void CreateAccount(String FN, String LN, String UserName, String Password)
-	{
-		User e = new User(FN, LN, UserName, Password);
-		Accounts.add(e);
-	}
-
-	public User getUser(String UserName)
-	{
-		for (int i = 0; i < Accounts.size(); i++) {
-			User user = Accounts.get(i);
-			if (user.getUserName().equalsIgnoreCase(UserName)) {
-				userIndex = i;
-				return user;
-			}
-		}
-		userIndex = -1;
-		return null;
-	}
-
-	public boolean login(String UserName, String Password)
-	{
-		if(Accounts.isEmpty())
-			return false;
-
-		User foundUser = getUser(UserName);
-
-		if (foundUser != null)
-		{
-			if(foundUser.Password.equals(Password))
-				return true;
-		}
-
-		return false;
-	}
-
-	public boolean signup(String FN, String LN, String UserName, String Password)
-	{
-		User foundUser = getUser(UserName);
-
-		if (foundUser == null)
-		{
-			userIndex = Accounts.size();
-			CreateAccount(FN, LN, UserName, Password);
-			return true;
-		}
-		return false;
-	}
-
-	public static User getCurrentUser(){
-		if(userIndex >= 0 && userIndex < Accounts.size()) {
-			return Accounts.get(userIndex);
-		} else {
-			return null;
-		}
-	}
 
 	public void addOrder(Order o){
 		myCart.emptyCart();
@@ -131,5 +74,9 @@ public class User {
 
 	public Cart getCart() {
 		return myCart;
+	}
+
+	public String getPassword(){
+		return Password;
 	}
 }

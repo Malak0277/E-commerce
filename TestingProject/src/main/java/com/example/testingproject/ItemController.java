@@ -36,13 +36,15 @@ public class ItemController implements Initializable {
     private Label itemPrice;
 
 
+    private User user = EcomSystem.getCurrentSystem().getCurrentUser();
+
     private Item item;
 
     private SpinnerValueFactory<Integer> spin;
 
     private Alert alert;
 
-    private Cart cart = User.getCurrentUser().getCart();
+    private Cart cart = user.getCart();
     private int itemAmount;
     private double totalPrice;
 
