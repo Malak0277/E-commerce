@@ -31,8 +31,10 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Nested
+        @DisplayName("add to card test valid and invalid")
         class AddToCartTests {
             @Test
+            @DisplayName("add to card test valid ")
             void addToCart_ValidAmount() {
                 cart.addToCart(item1, 2);
                 assertEquals(19, cart.getTotalPrice());
@@ -40,6 +42,7 @@ import static org.junit.jupiter.api.Assertions.*;
             }
 
             @Test
+            @DisplayName("add to card test invalid")
             void addToCart_InvalidAmount() { //exceeds stock
                 int initialStock = item2.getStock();
                 cart.addToCart(item2, initialStock + 1); // Try adding  more items than stock
@@ -49,6 +52,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @DisplayName("remove from cart test")
         void removeFromCart() {
             cart.addToCart(item1, 2);
             cart.removeFromCart(item1);
@@ -57,6 +61,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @DisplayName("amount increase test")
         void increaseAmount() {
             cart.addToCart(item1, 1);
             cart.increaseAmount(item1);
@@ -65,6 +70,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @DisplayName("amount decrease test")
         void decreaseAmount() {
             cart.addToCart(item2, 2);
             cart.decreaseAmount(item2);
@@ -81,31 +87,33 @@ import static org.junit.jupiter.api.Assertions.*;
             assertEquals(0.0, cart.getTotalPrice()); // Total price should be 0.0
         }
 
+        @Nested
+        @DisplayName("tests for getters ")
+        class GettersTests {
+            @Test
+            void GetItems() {
+                cart.addToCart(item1, 2);
+                cart.addToCart(item2, 1);
+                Map<Item, Integer> items = cart.getItems();
 
-    @Test
-    void GetItems() {
-        cart.addToCart(item1, 2);
-        cart.addToCart(item2, 1);
-        Map<Item, Integer> items = cart.getItems();
+                // Assert
+                assertNotNull(items);
+                assertEquals(2, items.size());
+                for (Item item : Arrays.asList(item1, item2)) {
+                    assertTrue(items.containsKey(item));
+                }
+                assertEquals(2, items.get(item1));
+                assertEquals(1, items.get(item2));
+            }
 
-        // Assert
-        assertNotNull(items);
-        assertEquals(2, items.size());
-        for (Item item : Arrays.asList(item1, item2)) {
-            assertTrue(items.containsKey(item));
+            @Test
+            void GetTotalPrice() {
+                cart.addToCart(item1, 2);
+                cart.addToCart(item2, 1);
+                double totalPrice = cart.getTotalPrice();
+
+                // Assert
+                assertEquals(29.99, totalPrice, 0.01);   //0.01 dh le t2reeb
+            }
         }
-        assertEquals(2, items.get(item1));
-        assertEquals(1, items.get(item2));
     }
-
-    @Test
-    void GetTotalPrice() {
-        cart.addToCart(item1, 2);
-        cart.addToCart(item2, 1);
-        double totalPrice = cart.getTotalPrice();
-
-        // Assert
-        assertEquals(29.99, totalPrice,0.01);   //0.01 dh le t2reeb
-    }
-}
-
