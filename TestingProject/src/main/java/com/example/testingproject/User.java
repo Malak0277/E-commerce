@@ -26,8 +26,6 @@ public class User {
 		myCart = new Cart();
 	}
 
-
-
 	public void addOrder(Order o){
 		myCart.emptyCart();
 		Orders.add(o);

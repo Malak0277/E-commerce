@@ -31,7 +31,7 @@ public class Order {
         this.cart = cart;
         this.Address = Address;
         this.Phonenumber = Phonenumber;
-        totalPrice = calc_totalPrice(cart.getTotalPrice());
+        totalPrice = calc_totalPrice();
         status = "Order_Placed";
         this.OrderID = OrderIDGenerate();
         time = LocalTime.now();
@@ -67,11 +67,11 @@ public class Order {
             status = "Delivered";
     }
 
-    public double calc_totalPrice(double totPrice)
+    public double calc_totalPrice()
     {
+        double totPrice = cart.getTotalPrice();
         if(totPrice < 1000)
             shippingPrice = 100;
-
         else
             shippingPrice = 0;
 

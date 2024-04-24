@@ -12,9 +12,10 @@ public class EcomSystem {
         currentSystem = this;
     }
 
-    public static EcomSystem getCurrentSystem(){
+    public static EcomSystem getCurrentSystem() {
         return currentSystem;
     }
+
 	private void CreateAccount(String FN, String LN, String UserName, String Password)
 	{
 		User e = new User(FN, LN, UserName, Password);

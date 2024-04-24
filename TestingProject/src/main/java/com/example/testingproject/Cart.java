@@ -19,7 +19,7 @@ public class Cart {
         this.totalPrice = other.totalPrice;
     }
 
-    public void addToCart(Item item, int amount) {
+    public void addoCart(Item item, int amount) {
         if(amount > item.getStock())
             return;
         int currentAmount = itemsAmounts.getOrDefault(item, 0);
