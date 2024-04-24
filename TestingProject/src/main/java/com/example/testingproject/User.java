@@ -64,16 +64,16 @@ public class User {
 		return false;
 	}
 
-	public boolean signup(String UserName)
+	public boolean signup(String FN, String LN, String UserName, String Password)
 	{
 		User foundUser = getUser(UserName);
 
 		if (foundUser == null)
 		{
 			userIndex = Accounts.size();
+			CreateAccount(FN, LN, UserName, Password);
 			return true;
 		}
-
 		return false;
 	}
 
@@ -86,11 +86,26 @@ public class User {
 	}
 
 	public void addOrder(Order o){
+		myCart.emptyCart();
 		Orders.add(o);
 	}
 
 	public void addVisa(Visa Visa){
 		Visas.add(Visa);
+	}
+
+	public void addCart(Cart cart){
+		this.myCart = cart;
+	}
+
+	public boolean Visa_Exist(String num)
+	{
+		for (Visa v : Visas) {
+			if(num.equals(v.getVisaNumber())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public ArrayList<Visa> get_visas(){
@@ -110,26 +125,11 @@ public class User {
 		return null;
 	}
 
-	/*public void orderGenerator()
-	{
-		Item i = new Item("Ain Shams", "Horror", 10, 250);
-		Cart c = new Cart();
-		c.addToCart(i, 3);
-		c.setTotalPrice();
-		double totalPrice = c.getTotalPrice();
-		Order o1 = new Order(c, totalPrice);
-		o1.orderRequest("ABC", "01054789346");
-		Order o2 = new Order(c, totalPrice);
-		o2.orderRequest("DFG", "01054789348");
-		Orders.add(o1);
-		Orders.add(o2);
-	}*/
-
 	public String getUserName(){
 		return UserName;
 	}
 
-    public Cart getCart() {
+	public Cart getCart() {
 		return myCart;
-    }
+	}
 }

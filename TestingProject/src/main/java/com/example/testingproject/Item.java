@@ -1,5 +1,7 @@
 package com.example.testingproject;
 
+import java.util.Objects;
+
 public class Item {
     private String name;
     private String genre;
@@ -15,6 +17,22 @@ public class Item {
         this.stock = stock;
         this.image = image;
     }
+///////
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Item item = (Item) obj;
+        return Double.compare(item.price, price) == 0 &&
+                Objects.equals(name, item.name) &&
+                Objects.equals(genre, item.genre) &&
+                Objects.equals(image, item.image);
+    }
+///////
 
     public void ordered(int amount) {
         stock -= amount;

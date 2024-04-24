@@ -37,8 +37,8 @@ public class Order {
         time = LocalTime.now();
 
         removeFromStock();
-        User.getCurrentUser().getCart().emptyCart();
     }
+
 
     public void removeFromStock(){
         for (Map.Entry<Item, Integer> currItem: cart.getItems().entrySet()){

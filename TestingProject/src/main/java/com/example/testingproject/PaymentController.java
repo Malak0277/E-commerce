@@ -79,15 +79,10 @@ public class PaymentController {
             return;
         }
 
-        for (Visa v : User.getCurrentUser().get_visas()) {
-            if(num.equals(v.getVisaNumber())){
-                MessageLabel.setText("Visa already exists!");
-                return;
-            }
+        if(!visa.CreateVisa(num, cvv)){
+            MessageLabel.setText("Visa already exists!");
+            return;
         }
-
-        visa = new Visa(num, cvv);
-        User.getCurrentUser().addVisa(visa);
 
         Cart car = new Cart(User.getCurrentUser().getCart());
         Order order = new Order(car, Order.currrentOrder.getAddress(), Order.currrentOrder.getPhoneNumber());
