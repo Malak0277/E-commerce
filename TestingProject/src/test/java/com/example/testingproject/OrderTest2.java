@@ -31,37 +31,30 @@ class OrderTest2 {
 	}
 	@BeforeEach
    void setUp() {
-       // Initialize a cart with some items
        cart = new Cart();
-       cart.addToCart(new Item("Item1", "Genre1", 100, 5, "image1.jpg"), 2); 
-       cart.addToCart(new Item("Item2", "Genre2", 200, 10, "image2.jpg"), 1);
-       // Create an order
+       cart.addToCart(new Item("Lost", "Fiction", 100, 5, "image1.jpg"), 2); 
+       cart.addToCart(new Item("TVD", "Romance", 200, 10, "image2.jpg"), 1);
        order = new Order(cart, "123 Main St", "1234567890");
    }
    @AfterEach
    public void tearDown() {
        order = null;
+       cart = null;
    }
-
+   @Nested
+   @DisplayName(" Order Creation Tests")
+   class OrderCreationTests {
 	@Test
     @org.junit.jupiter.api.Order(1)
     @DisplayName("Test order ID generation")
     public void testOrderIDGenerate() {
        Order order2 = new Order(cart, "456 Elm St", "9876543210");
-
-       // Extract order IDs
        String orderID1 = order.getOrderID();
        String orderID2 = order2.getOrderID();
-
-       // Check if order IDs are not null
        assertNotNull(orderID1);
        assertNotNull(orderID2);
-
-       // Check if order IDs have correct format
        assertTrue(orderID1.matches("ORD-[a-zA-Z0-9]{6}"));
        assertTrue(orderID2.matches("ORD-[a-zA-Z0-9]{6}"));
-
-       // Check if order IDs are unique
        assertNotEquals(orderID1, orderID2);
     }
 	
@@ -70,7 +63,7 @@ class OrderTest2 {
     @DisplayName("Test total price calculation")
     public void testCalcTotalPrice() {
         assertEquals(500, order.calc_totalPrice());
-        cart.addToCart(new Item("Item3", "Genre3", 1000, 10, "image3.jpg"), 1);
+        cart.addToCart(new Item("THE100", "Fiction", 1000, 10, "image3.jpg"), 1);
        assertNotEquals(1500, order.calc_totalPrice());
     }
 
@@ -97,7 +90,10 @@ class OrderTest2 {
         order.scheduleStatusUpdate(endTime);
         assertEquals("Dispatch",order.getStatus());
     }
-
+   }
+   @Nested
+   @DisplayName(" Stock Handelling")
+   class StockHandelling {
     @Test
     @org.junit.jupiter.api.Order(6)
     @DisplayName("Test cancel order")
@@ -106,12 +102,12 @@ class OrderTest2 {
         for (Map.Entry<Item, Integer> entry : cart.getItems().entrySet()) {
             initialStock.put(entry.getKey(), entry.getKey().getStock());
         }
-        // Cancel the order
+        
         order.cancel_order();
-        // Get updated stock quantities
+        
         Map<Item, Integer> updatedStock = cart.getItems();
 
-        // Assert that items are correctly added back to stock
+
         for (Map.Entry<Item, Integer> entry : updatedStock.entrySet()) {
             int initialQuantity = initialStock.get(entry.getKey());
             int updatedQuantity = entry.getKey().getStock();
@@ -126,12 +122,12 @@ class OrderTest2 {
         for (Map.Entry<Item, Integer> entry : cart.getItems().entrySet()) {
             initialStock.put(entry.getKey(), entry.getKey().getStock());
         }
-        // Remove items from stock
+
+
         order.removeFromStock();
-        // Get updated stock quantities
+   
         Map<Item, Integer> updatedStock = cart.getItems();
 
-        // Assert that items are correctly removed from stock
         for (Map.Entry<Item, Integer> entry : updatedStock.entrySet()) {
             int initialQuantity = initialStock.get(entry.getKey());
             int updatedQuantity = entry.getKey().getStock();
@@ -139,6 +135,10 @@ class OrderTest2 {
             assertEquals(initialQuantity - orderedQuantity, updatedQuantity);
         }
     }
+   }
+   @Nested
+   @DisplayName(" Basic Class functions")
+   class BasicFunctions {
     @Test
     @org.junit.jupiter.api.Order(8)
     @DisplayName("Test getters and setters working")
@@ -158,8 +158,14 @@ class OrderTest2 {
     }
         
       
+   }
     
-    
+		
+	
+
+
+}
+
 		
 	
 
