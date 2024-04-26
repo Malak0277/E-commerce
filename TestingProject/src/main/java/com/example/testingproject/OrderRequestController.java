@@ -15,12 +15,6 @@ import java.io.IOException;
 public class OrderRequestController {
 
     @FXML
-    private AnchorPane Data;
-
-    @FXML
-    private AnchorPane Main;
-
-    @FXML
     private TextField address;
 
     @FXML

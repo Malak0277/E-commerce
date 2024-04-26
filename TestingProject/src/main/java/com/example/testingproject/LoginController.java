@@ -28,13 +28,7 @@ public class LoginController {
     private Label LoginMessageLabel;
 
     @FXML
-    private AnchorPane LoginPane;
-
-    @FXML
     private PasswordField PasswordTF;
-
-    @FXML
-    private Button SignupButton;
 
     @FXML
     private TextField UsernameTF;

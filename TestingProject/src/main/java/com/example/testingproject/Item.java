@@ -32,7 +32,6 @@ public class Item {
                 Objects.equals(genre, item.genre) &&
                 Objects.equals(image, item.image);
     }
-///////
 
     public void ordered(int amount) {
         stock -= amount;
@@ -45,10 +44,6 @@ public class Item {
     public String getName() {
         return name;
     }
-
-//    public String getGenre() {
-//        return genre;
-//    }
 
     public double getPrice() {
         return price;

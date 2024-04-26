@@ -65,10 +65,6 @@ public class CartController implements Initializable {
 
     private User user = EcomSystem.getCurrentSystem().getCurrentUser();
 
-//    @FXML
-//    private ScrollPane cartScrollPane;
-
-    ///////////////EDIT BASED ON WHERE IT BE CALLED
     Cart c = user.getCart();
     private Map<Item, Integer> cartItems = c.getItems();
 

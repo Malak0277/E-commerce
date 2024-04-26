@@ -1,21 +1,15 @@
 package com.example.testingproject;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Spinner;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ItemController implements Initializable {

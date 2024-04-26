@@ -33,12 +33,6 @@ public class SignupController {
     private TextField lastnameTF;
 
     @FXML
-    private Label passwordLabel;
-
-    @FXML
-    private Label passwordMatchLabel;
-
-    @FXML
     private PasswordField passwordTF;
 
     @FXML
@@ -79,8 +73,6 @@ public class SignupController {
             signupmessageLabel.setText("Username already exists");
             return;
         }
-
-        //user.CreateAccount(firstName, lastName, username, password);
 
         navigateTo(event, "Catalog.fxml");
     }

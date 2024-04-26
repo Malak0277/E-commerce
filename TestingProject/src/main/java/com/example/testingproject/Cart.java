@@ -1,9 +1,7 @@
 package com.example.testingproject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class Cart {
     private Map<Item, Integer> itemsAmounts;
@@ -24,13 +22,11 @@ public class Cart {
             return;
         int currentAmount = itemsAmounts.getOrDefault(item, 0);
         itemsAmounts.put(item, currentAmount + amount);
-        //item.ordered(amount);
         setTotalPrice();
     }
 
     public void removeFromCart(Item item) {
         itemsAmounts.remove(item);
-        //item.unordered(item.itemsAmounts);
         setTotalPrice();
     }
 

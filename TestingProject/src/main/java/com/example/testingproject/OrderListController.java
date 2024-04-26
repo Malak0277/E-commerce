@@ -89,10 +89,6 @@ public class OrderListController {
     //static boolean s = true;
     @FXML
      public void initialize() {
-        /*if(s) {
-            User.getCurrentUser().orderGenerator();
-            s = false;
-        }*/
         populateOrdersList();
         nextBtn.setOnAction(event -> nextBtnOnAction(event));
         backBtn.setOnAction(event -> backBtnOnAction(event));

@@ -53,30 +53,6 @@ public class CatalogController implements Initializable {
     @FXML
     private GridPane science;
 
-    @FXML
-    private VBox sideNav;
-
-    @FXML
-    private Tab tab1;
-
-    @FXML
-    private Tab tab2;
-
-    @FXML
-    private Tab tab3;
-
-    @FXML
-    private Tab tab4;
-
-    @FXML
-    private Tab tab5;
-
-    @FXML
-    private Tab tab6;
-
-    @FXML
-    private Tab tab7;
-
     private GridPane grid;
     private Catalog currList;
 
