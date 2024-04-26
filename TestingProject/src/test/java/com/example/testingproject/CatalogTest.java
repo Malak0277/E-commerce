@@ -10,7 +10,15 @@ class CatalogTest {
     private Catalog catalog;
     private Item item1;
     private Item item2;
+    @BeforeAll
+    static void setUpBeforeClass() throws Exception {
+        System.out.println("Initiating Catalog Testing");
+    }
 
+    @AfterAll
+    static void tearDownAfterClass() throws Exception {
+        System.out.println("Done Catalog Testing");
+    }
 
     @BeforeEach
     void setUp() {
@@ -27,6 +35,7 @@ class CatalogTest {
     }
 
     @Test
+    @Order(1)
     @DisplayName("tests for adding items ")
     void addItem() {
         catalog.addItem(item1);
@@ -42,6 +51,7 @@ class CatalogTest {
     @DisplayName("tests for getters ")
     class GettersTests {
         @Test
+        @Order(2)
         @DisplayName("getItem test ")
         void getItem() {
             catalog.addItem(item1);
@@ -51,6 +61,7 @@ class CatalogTest {
         }
 
         @Test
+        @Order(3)
         @DisplayName("get all item test ")
         void getAllItems() {
             catalog.addItem(item1);
@@ -64,6 +75,7 @@ class CatalogTest {
     }
 
     @Test
+    @Order(4)
     @DisplayName("test for size func")
     void size() {
             assertEquals(0, catalog.size());
