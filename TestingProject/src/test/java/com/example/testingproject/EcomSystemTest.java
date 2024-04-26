@@ -45,18 +45,25 @@ class EcomSystemTest {
 
     @Test
     @Order(2)
-    @DisplayName("Test Duplicate Signup")
-    void testDuplicateSignup() {
+    @DisplayName("Test Signup")
+    void testSignup() {
         assertTrue(ecomSystem.signup("Siveen", "Said", "Siveen3", "password456"));
         assertFalse(ecomSystem.signup("Siveen", "Said", "Siveen3", "password456"));
+        User user = ecomSystem.getUser("Siveen3");
+        assertEquals("password456",user.getPassword());
+        assertEquals("Siveen3",user.getUserName());
+        
     }
 
     @Test
     @Order(3)
     @DisplayName("Test Get Current User")
     void testGetCurrentUser() {
-        assertNull(ecomSystem.getCurrentUser());
-        ecomSystem.signup("Charlie", "Brown", "charlie_brown", "password789");
+    	User user = ecomSystem.getCurrentUser();
+        assertNull(user);
+        ecomSystem.signup("Chery", "salem", "chery_salem", "password789");
         assertNotNull(ecomSystem.getCurrentUser());
+        assertEquals(ecomSystem.getUser("chery_salem"),ecomSystem.getCurrentUser());
     }
 }
+
