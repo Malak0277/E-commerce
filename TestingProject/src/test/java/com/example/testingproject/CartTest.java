@@ -15,7 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
         private Cart cart;
         private Item item1;
         private Item item2;
+        
+        @BeforeAll
+        static void setUpBeforeClass() throws Exception {
+            System.out.println("Initiating Cart Testing");
+        }
 
+        @AfterAll
+        static void tearDownAfterClass() throws Exception {
+            System.out.println("Done Cart Testing");
+        }
         @BeforeEach
         void setUp() {
             cart = new Cart();
@@ -34,6 +43,7 @@ import static org.junit.jupiter.api.Assertions.*;
         @DisplayName("add to card test valid and invalid")
         class AddToCartTests {
             @Test
+            @Order(1)
             @DisplayName("add to card test valid ")
             void addToCart_ValidAmount() {
                 cart.addToCart(item1, 2);
@@ -42,6 +52,7 @@ import static org.junit.jupiter.api.Assertions.*;
             }
 
             @Test
+            @Order(2)
             @DisplayName("add to card test invalid")
             void addToCart_InvalidAmount() { //exceeds stock
                 int initialStock = item2.getStock();
@@ -52,6 +63,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @Order(3)
         @DisplayName("remove from cart test")
         void removeFromCart() {
             cart.addToCart(item1, 2);
@@ -61,6 +73,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @Order(4)
         @DisplayName("amount increase test")
         void increaseAmount() {
             cart.addToCart(item1, 1);
@@ -70,6 +83,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @Order(5)
         @DisplayName("amount decrease test")
         void decreaseAmount() {
             cart.addToCart(item2, 2);
@@ -79,6 +93,7 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
+        @Order(6)
         void emptyCart() {
             cart.addToCart(item1, 2);
             cart.addToCart(item2, 1);
@@ -91,6 +106,7 @@ import static org.junit.jupiter.api.Assertions.*;
         @DisplayName("tests for getters ")
         class GettersTests {
             @Test
+            @Order(7)
             void GetItems() {
                 cart.addToCart(item1, 2);
                 cart.addToCart(item2, 1);
@@ -107,6 +123,7 @@ import static org.junit.jupiter.api.Assertions.*;
             }
 
             @Test
+            @Order(8)
             void GetTotalPrice() {
                 cart.addToCart(item1, 2);
                 cart.addToCart(item2, 1);
