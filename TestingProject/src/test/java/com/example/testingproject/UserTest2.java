@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 class UserTest2 {
 	private User user;
 
@@ -52,7 +51,7 @@ class UserTest2 {
              
              List<Order> UserssO = user.get_orders(); 
              assertNotNull(UserssO);
-             assertEquals(1, user.get_orders().size()); // Check if the order is added to the user's orders
+             assertEquals(1, UserssO.size()); 
         }
 
         @Test
@@ -62,15 +61,22 @@ class UserTest2 {
         	Order order = new Order(new Cart(), "123 Main St", "1234567890");
             user.addOrder(order);
             assertEquals(order, user.getOrder(order.getOrderID()));
-            assertNotNull(user.get_orders());
+        }
+        @Test
+        @org.junit.jupiter.api.Order(3)
+        @DisplayName("Test Getters")
+        public void testGetters() {
+            assertEquals("maen_ddd", user.getUserName());
+            assertNotNull(user.getCart());
+            assertEquals("password23ff", user.getPassword());
         }
     }
     @Nested
-    @DisplayName("Visa Management")
-    class VisaManagementTests {
+    @DisplayName("Visa_User Management")
+    class Visa_UserManagementTests {
 
         @Test
-        @org.junit.jupiter.api.Order(3)
+        @org.junit.jupiter.api.Order(4)
         @DisplayName("Test Add Visa")
         public void testADDVisas() {
         	 ArrayList<Visa> expectedList = new ArrayList<>();
@@ -89,15 +95,17 @@ class UserTest2 {
              assertArrayEquals(expectedArray, actualArray);
             
         }
+        @Test
+        @org.junit.jupiter.api.Order(5)
+        @DisplayName("Test Username")
+        public void testGetUserName() {
+            assertEquals("maen_ddd", user.getUserName()); 
+        }
     }
 
-    @Test
-    @org.junit.jupiter.api.Order(4)
-    @DisplayName("Test Username")
-    public void testGetUserName() {
-        assertEquals("maen_ddd", user.getUserName()); 
-    }
+    
 
   
 
 }
+
