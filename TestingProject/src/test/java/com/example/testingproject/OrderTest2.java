@@ -136,9 +136,7 @@ class OrderTest2 {
         }
     }
    }
-   @Nested
-   @DisplayName(" Basic Class functions")
-   class BasicFunctions {
+   
     @Test
     @org.junit.jupiter.api.Order(8)
     @DisplayName("Test getters and setters working")
@@ -158,7 +156,7 @@ class OrderTest2 {
     }
         
       
-   }
+   
     
 		
 	
