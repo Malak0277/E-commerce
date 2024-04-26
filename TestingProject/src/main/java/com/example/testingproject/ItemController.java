@@ -1,7 +1,7 @@
 package com.example.testingproject;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.fxml.FXML;

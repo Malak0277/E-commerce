@@ -1,6 +1,7 @@
 package com.example.testingproject;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Order;
 
 import static org.junit.jupiter.api.Assertions.*;
 

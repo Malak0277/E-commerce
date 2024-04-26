@@ -8,7 +8,7 @@ import org.junit.platform.suite.api.Suite;
         CatalogTest.class,
         EcomSystemTest.class,
         ItemTest.class,
-        // OrderTest2.class,
+        OrderTest2.class,
         UserTest2.class,
         VisaTest.class
 })

@@ -7,12 +7,7 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class OrderTest2 {
 	private Order order;
@@ -154,18 +149,4 @@ class OrderTest2 {
         assertEquals("Delivered",UpdatedStatus);
         
     }
-        
-      
-   
-    
-		
-	
-
-
-}
-
-		
-	
-
-
 }
